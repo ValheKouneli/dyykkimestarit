@@ -1,6 +1,8 @@
 # Tietokantasovellus - Sukelluskeskus Dyykkimestarit työaikaseuranta
 Tietokantasovellus, kesä 2018
 
+[Heroku](https://dyykkitsoha.herokuapp.com/)
+
 ## Kuvaus
 Valitsin aiheekseni hieman muokatun version aiheaihioissa olleesta projektin työaikaseurannasta. Toteutan kuvitteellisen sukelluskeskuksen työaikaseurannan, jossa työtä voidaan kirjata sekä seurata työlajeittain. Tällaisia työlajeja ovat esimerkiksi kurssien ohjaamiset, asiakkaiden sukellusretkien toteutus, varustehuolto ja toimistotyöt. Projekteja korvaamaan käytetään kursseja ja retkiä. Nämä tapahtumat saattavat osallistujamäärästä tai haastavuudesta johtuen vaatia enemmän osallistujia tai matkustamista, jolloin työaikaseurantaan tulee myös työvuorosuunnittelullinen elementti, joskin projektin tarkoituksena ei ole tehdä työvuorolistoja lääkärikeskus -aiheen mukaisesti.
 
