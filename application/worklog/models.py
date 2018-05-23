@@ -10,11 +10,11 @@ class WorkDone(db.Model):
     task_id = db.Column(db.Integer, nullable=True)
     worked_hours = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, task):
-        self.worker_id = 1
+    def __init__(self, worker_id, task, task_id, worked_hours):
+        self.worker_id = worker_id
         self.task = task
-        self.task_id = 1
-        self.worked_hours = 0
+        self.task_id = task_id
+        self.worked_hours = worked_hours
 
 class PlannedWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,10 +24,11 @@ class PlannedWork(db.Model):
     worker_one = db.Column(db.Integer, nullable=False)
     worker_two = db.Column(db.Integer, nullable=True)
 
-    def __init__(self, name):
+    def __init__(self, name, date, worker_one, worker_two):
         self.name = name
-        self.date = "1.1.1970"
-        self.worker_one = 1
+        self.date = date
+        self.worker_one = worker_one
+        self.worker_two = worker_two
 
 class Employees(db.Model):
     id = db.Column(db.Integer, primary_key=True)
