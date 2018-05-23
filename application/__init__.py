@@ -7,6 +7,8 @@ app.config["SQLALCHEMY_ECHO"] = True
 db = SQLAlchemy(app) 
 
 from application import views
-from application.tasks import models
+
+from application.worklog import models
+from application.worklog import views
 
 db.create_all()
