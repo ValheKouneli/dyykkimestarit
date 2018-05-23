@@ -2,14 +2,17 @@ from application import app, db
 from flask import render_template, request
 from application.worklog.models import WorkDone
 
+#Listaus
 @app.route("/worklog", methods=["GET"])
 def worklog_index():
     return render_template("worklog/list.html", worklog = WorkDone.query.all())
 
+#Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
 def worklog_form():
     return render_template("worklog/new.html")
 
+#Uuden työtehtävän POST
 @app.route("/worklog/", methods=["POST"])
 def worklog_create():
     id = request.form.get("id")
@@ -22,4 +25,4 @@ def worklog_create():
     db.session().add(new)
     db.session().commit()
 
-    return "PLACEHOLDER"
+    return redirect(url_for("worklog_index"))

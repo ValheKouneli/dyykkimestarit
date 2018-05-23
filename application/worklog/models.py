@@ -1,5 +1,6 @@
 from application import db
 
+#Tehdyt työtehtävät tietokantataulu
 class WorkDone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
@@ -16,6 +17,7 @@ class WorkDone(db.Model):
         self.task_id = task_id
         self.worked_hours = worked_hours
 
+#Suunnitellut työtehtävät tietokantataulu
 class PlannedWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -30,6 +32,7 @@ class PlannedWork(db.Model):
         self.worker_one = worker_one
         self.worker_two = worker_two
 
+#Työntekijät tietokantataulu
 class Employees(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 

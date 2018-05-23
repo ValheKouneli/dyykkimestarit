@@ -8,7 +8,6 @@
       <th>Tehtävän kuvaus</th>
       <th>Tehtävän tunnistenumero</th>
       <th>Työtunnit</th>
-      <th>Viimeksi muokattu</th>
     </tr>
     {% for work in worklog %}
     <tr>
@@ -17,7 +16,6 @@
       <td>{{ work.task }}</td>
       <td>{{ work.task_id }}</td>
       <td>{{ work.worked_hours }}</td>
-      <td>{{ work.date_modified }}</td>
     </tr>
     {% endfor %}
   </table>
