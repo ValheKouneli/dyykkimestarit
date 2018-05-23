@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Päivämäärä</th>
+      <th>Työntekijän tunnistenumero</th>
+      <th>Tehtävän kuvaus</th>
+      <th>Tehtävän tunnistenumero</th>
+      <th>Työtunnit</th>
+      <th>Viimeksi muokattu</th>
+    </tr>
+    {% for work in worklog %}
+    <tr>
+      <td>{{ work.date_created }}</td>
+      <td>{{ work.worker_id }}</td>
+      <td>{{ work.task }}</td>
+      <td>{{ work.task_id }}</td>
+      <td>{{ work.worked_hours }}</td>
+      <td>{{ work.date_modified }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

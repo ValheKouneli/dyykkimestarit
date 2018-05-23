@@ -2,6 +2,10 @@ from application import app, db
 from flask import render_template, request
 from application.worklog.models import WorkDone
 
+@app.route("/worklog", methods=["GET"])
+def worklog_index():
+    return render_template("worklog/list.html", worklog = WorkDone.query.all())
+
 @app.route("/worklog/new")
 def worklog_form():
     return render_template("worklog/new.html")
