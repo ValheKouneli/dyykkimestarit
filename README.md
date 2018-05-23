@@ -9,14 +9,14 @@ Valitsin aiheekseni hieman muokatun version aiheaihioissa olleesta projektin ty�
 
 ### Perustoimintoja
 * Kirjautuminen sivustolle
-* Työaikakirjauksen teko
-* Kurssin, retken tai muun tapahtuman perustaminen
+* Työaikakirjauksen teko (Lisää uusi tietokantaan, lue kirjaus tietokannasta, muokkaa kirjausta, poista kirjaus)
+* Kurssin, retken tai muun tapahtuman perustaminen (Lisää uusi tietokantaan, lue kirjaus tietokannasta, muokkaa kirjausta, poista kirjaus)
 * Työntekijän liittäminen tapahtumaan
 * Työntekijän poistaminen tapahtumasta
 * Keskuksen johtajan raportit
 * Työntekijän henkilökohtainen raportti
 
 ### Suunniteltuja lisätoimintoja
-* Työvuorosuunnittelullinen käyttöliittymä johtajan näkymään
-* Uusien kurssien ja tapahtumien luonti tulevaisuuteen (näkyminen työntekijöiden näkymässä)
+* Työvuorosuunnittelullinen käyttöliittymä johtajan näkymään 
+* Uusien kurssien ja tapahtumien luonti tulevaisuuteen (näkyminen työntekijöiden näkymässä) (CRUD -operaatiot, tietokantataulu)
 * Varoitukset, mikäli kursseille ja tapahtumiin suunnitelluilla kouluttajilla ei ole tarvittavia valmiuksia kyseiseen tapahtumaan
