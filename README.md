@@ -2,6 +2,7 @@
 Tietokantasovellus, kesä 2018
 
 [Heroku](https://dyykkitsoha.herokuapp.com/)
+
 Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
 
 ## Kuvaus
