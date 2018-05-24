@@ -16,6 +16,7 @@
       <td>{{ work.task }}</td>
       <td>{{ work.task_id }}</td>
       <td>{{ work.worked_hours }}</td>
+      <td><button onclick="location.href='/worklog/{{ work.id }}/'" type="button">Muokkaa</button></td>
     </tr>
     {% endfor %}
   </table>

@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<form method="POST" action="{{ url_for('worklog_create') }}">
+    Henkilönumerosi: <input style="background-color: grey" type="text" name="id" value="{{ work.worker_id }}" readonly/>
+    Muokkaa tehtävän kuvausta: <input type=text  name="task" value="{{ work.task }}" />
+    Muokkaa työtehtävän tunnistenumeroa: <input type="text" name="task_id" value="{{ work.task_id }}" />
+    Muokkaa tehtyjä työtunteja: <input type="text" name="worked_hours" value="{{ work.worked_hours }}" />
+    <input type="submit" value="Muokkaa työtehtävää" />
+</form>
+{% endblock %}
