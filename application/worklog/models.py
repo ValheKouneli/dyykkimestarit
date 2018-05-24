@@ -3,7 +3,7 @@ from application import db
 #Tehdyt työtehtävät tietokantataulu
 class WorkDone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_created = db.Column(db.Date, default=db.func.current_date())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
     worker_id = db.Column(db.Integer, nullable=False)
@@ -22,7 +22,7 @@ class PlannedWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(144), nullable=False)
-    date = db.Column(db.String(144), nullable=False)
+    date = db.Column(db.Date, nullable=False)
     worker_one = db.Column(db.Integer, nullable=False)
     worker_two = db.Column(db.Integer, nullable=True)
 
@@ -32,7 +32,7 @@ class PlannedWork(db.Model):
         self.worker_one = worker_one
         self.worker_two = worker_two
 
-#Työntekijät tietokantataulu
+#Työntekijät tietokantataulu, käyttöön myöhemmin kirjautumisen yhteydessä!
 class Employees(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 

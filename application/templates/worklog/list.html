@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+  <table class="reunus" >
     <tr>
-      <th>Päivämäärä</th>
-      <th>Työntekijän tunnistenumero</th>
-      <th>Tehtävän kuvaus</th>
-      <th>Tehtävän tunnistenumero</th>
-      <th>Työtunnit</th>
+      <th class="reunus">Päivämäärä</th>
+      <th class="reunus">Työntekijän ID</th>
+      <th class="reunus">Tehtävän kuvaus</th>
+      <th class="reunus">Tehtävän ID</th>
+      <th class="reunus"> Työtunnit</th>
     </tr>
     {% for work in worklog %}
-    <tr>
+    <tr style="text-align: center; vertical-align: middle;" >
       <td>{{ work.date_created }}</td>
       <td>{{ work.worker_id }}</td>
       <td>{{ work.task }}</td>
