@@ -28,21 +28,19 @@ def worklog_create():
     return redirect(url_for("worklog_index"))
 
 #Työtehtävän muokkaaminen
-@app.route("/worklog/<work_id>/", methods=["GET"])
-def worklog_editform(work_id):
-    return render_template("worklog/edit.html", work = WorkDone.query.get(work_id))
-
-
-#Työtehtävän muokkaaminen POST
-@app.route("/worklog/<work_id>/", methods=["POST"])
+@app.route("/worklog/<work_id>/", methods=["GET", "POST"])
 def worklog_edit(work_id):
-    edit = WorkDone.query.get(work_id)
-    edit.worker_id = request.form.get("id")
-    edit.task = request.form.get("task")
-    edit.task_id = request.form.get("task_id")
-    edit.worked_hours = request.form.get("worked_hours")
+    if  request.method == 'POST':
+        edit = WorkDone.query.get(work_id)
+        edit.worker_id = request.form.get("worker_id")
+        edit.task = request.form.get("task")
+        edit.task_id = request.form.get("task_id")
+        edit.worked_hours = request.form.get("worked_hours")
 
-    db.session().commit()
+        db.session().commit()
 
-    return redirect(url_for("worklog_index"))
+        return redirect(url_for("worklog_index"))
+    else:
+        return render_template("worklog/edit.html", w = WorkDone.query.get(work_id))
+
 
