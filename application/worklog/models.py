@@ -20,7 +20,7 @@ class WorkDone(db.Model):
 
 #Tulevat kurssit - Hahmotelma
 class UpcomingWork(db.Model):
-    id = db.Column(db.Integer), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(144), nullable=False)
     date = db.Column(db.Date, nullable=False)
