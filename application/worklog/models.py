@@ -26,7 +26,6 @@ class UpcomingWork(db.Model):
     date = db.Column(db.Date, nullable=False)
     second_worker = db.Column(db.Integer, nullable=True)
     hours = db.Column(db.Integer, nullable=False)
-
     def __init__(self, name, date, second_worker, hours):
         self.name = name
         self.date = date
@@ -35,8 +34,9 @@ class UpcomingWork(db.Model):
 
 #Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
 class PlannedWork(db.Model):
-    worker_id = db.Column(db.Integer, ForeignKey("employees.id"), nullable=False)
-    course_id = db.Column(db.Integer, ForeignKey("upcoming_work.id"), nullable=False)
+    key_id = db.Column(db.Integer, primary_key=True)
+    worker_id = db.Column(db.Integer, db.ForeignKey("employees.id"), nullable=False)
+    course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False)
 
 
 
