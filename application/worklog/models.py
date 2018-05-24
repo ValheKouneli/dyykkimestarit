@@ -6,6 +6,7 @@ class WorkDone(db.Model):
     date_created = db.Column(db.Date, default=db.func.current_date())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
+    #worker_id myöhemmin foreign_keyksi kun employees tietokanta tulee käyttöön
     worker_id = db.Column(db.Integer, nullable=False)
     task = db.Column(db.String(144), nullable=False)
     task_id = db.Column(db.Integer, nullable=True)
@@ -17,29 +18,36 @@ class WorkDone(db.Model):
         self.task_id = task_id
         self.worked_hours = worked_hours
 
-#Suunnitellut työtehtävät tietokantataulu
-class PlannedWork(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+#Tulevat kurssit - Hahmotelma
+class UpcomingWork(db.Model):
+    id = db.Column(db.Integer), primary_key=True)
 
     name = db.Column(db.String(144), nullable=False)
     date = db.Column(db.Date, nullable=False)
-    worker_one = db.Column(db.Integer, nullable=False)
-    worker_two = db.Column(db.Integer, nullable=True)
+    second_worker = db.Column(db.Integer, nullable=True)
+    hours = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, name, date, worker_one, worker_two):
+    def __init__(self, name, date, second_worker, hours):
         self.name = name
         self.date = date
-        self.worker_one = worker_one
-        self.worker_two = worker_two
+        self.second_worker = second_worker
+        self.hours = hours
+
+#Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
+class PlannedWork(db.Model):
+    worker_id = db.Column(db.Integer, ForeignKey("employees.id"), nullable=False)
+    course_id = db.Column(db.Integer, ForeignKey("upcoming_work.id"), nullable=False)
+
+
 
 #Työntekijät tietokantataulu, käyttöön myöhemmin kirjautumisen yhteydessä!
 class Employees(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     name = db.Column(db.String(144), nullable=False)
-    courses = db.Column(db.String(144), nullable=False)
+    certificates = db.Column(db.String(144), nullable=False)
 
-    def __init__(self, name):
+    def __init__(self, name, certificates):
         self.name = name
-        self.courses = DM
+        self.certificates = certificates
 
