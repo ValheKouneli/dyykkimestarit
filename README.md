@@ -7,6 +7,8 @@ Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, 
 
 [User Storyt](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
 
+[Skeema / Tietokantakaavio](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/tietokantakaavio.md)
+
 ## Kuvaus
 Valitsin aiheekseni hieman muokatun version aiheaihioissa olleesta projektin työaikaseurannasta. Toteutan kuvitteellisen sukelluskeskuksen työaikaseurannan, jossa työtä voidaan kirjata sekä seurata työlajeittain. Tällaisia työlajeja ovat esimerkiksi kurssien ohjaamiset, asiakkaiden sukellusretkien toteutus, varustehuolto ja toimistotyöt. Projekteja korvaamaan käytetään kursseja ja retkiä. Nämä tapahtumat saattavat osallistujamäärästä tai haastavuudesta johtuen vaatia enemmän osallistujia tai matkustamista, jolloin työaikaseurantaan tulee myös työvuorosuunnittelullinen elementti, joskin projektin tarkoituksena ei ole tehdä työvuorolistoja lääkärikeskus -aiheen mukaisesti.
 
