@@ -37,17 +37,3 @@ class PlannedWork(db.Model):
     key_id = db.Column(db.Integer, primary_key=True)
     worker_id = db.Column(db.Integer, db.ForeignKey("employees.id"), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False)
-
-
-
-#Työntekijät tietokantataulu, käyttöön myöhemmin kirjautumisen yhteydessä!
-class Employees(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-
-    name = db.Column(db.String(144), nullable=False)
-    certificates = db.Column(db.String(144), nullable=False)
-
-    def __init__(self, name, certificates):
-        self.name = name
-        self.certificates = certificates
-

@@ -19,6 +19,7 @@ def worklog_form():
 def worklog_create():
     form = WorkForm(request.form)
 
+    #Validoinnin tarkastus
     if not form.validate():
         return render_template("/worklog/new.html", form=form)
 
@@ -38,6 +39,7 @@ def worklog_edit(work_id):
     if  request.method == 'POST':
         editform = EditForm(request.form)
 
+        #Validoinnin tarkastus
         if not editform.validate():
             return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=editform)
 
@@ -49,7 +51,6 @@ def worklog_edit(work_id):
 
         return redirect(url_for("worklog_index"))
     else:
-        
         return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=form)
 
 
