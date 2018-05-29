@@ -1,24 +1,24 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, IntegerField, validators
 
 class WorkForm(FlaskForm):
-    id = StringField("Anna henkilönumerosi: ")
-    task = StringField("Kuvaile työtehtävän sisältöä: ")
-    task_id = StringField("Anna työtehtävän mahdollinen tunnistenumero: ")
-    hours = StringField("Kuinka monta tuntia työskentelit? ")
+    worker_id = IntegerField("Anna henkilönumerosi: ")
+    task = StringField("Kuvaile työtehtävän sisältöä: ", [validators.Length(min=5)])
+    task_id = IntegerField("Anna työtehtävän mahdollinen tunnistenumero: ", [validators.Optional()])
+    worked_hours = IntegerField("Kuinka monta tuntia työskentelit? ")
 
     class Meta:
         csrf = False
 
 class EditForm(FlaskForm):
     #Ei muokattavissa
-    worker_id = StringField("Henkilönumerosi: ")
-    id = StringField("Työtehtävän kirjausnumero: ")
+    worker_id = IntegerField("Henkilönumerosi: ")
+    id = IntegerField("Työtehtävän kirjausnumero: ")
 
     #Muokattavissa
-    task = StringField("Muokkaa työtehtävän kuvausta: ")
-    task_id = StringField("Muokkaa työtehtävän tunnistenumeroa: ")
-    worked_hours = StringField("Muokkaa tehtyjä työtunteja: ")
+    task = StringField("Muokkaa työtehtävän kuvausta: ", [validators.Length(min=5)])
+    task_id = IntegerField("Muokkaa työtehtävän tunnistenumeroa: ", [validators.Optional()])
+    worked_hours = IntegerField("Muokkaa tehtyjä työtunteja: ")
 
     class Meta:
         csrf = False

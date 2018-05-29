@@ -5,10 +5,19 @@
     <table>
         <tr>
             <td>
-                {{ form.id.label }}
+                {{ form.worker_id.label }}
             </td>
             <td>
-                {{ form.id }}
+                {{ form.worker_id }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.worker_id.errors %}
+                    <li>
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </td>
         </tr>
         <tr>
@@ -17,6 +26,15 @@
             </td>
             <td>
                 {{ form.task }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.task.errors %}
+                    <li>
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </td>
         </tr>
         <tr>
@@ -29,10 +47,19 @@
         </tr>
         <tr>
             <td>
-                {{ form.hours.label }}
+                {{ form.worked_hours.label }}
             </td>
             <td>
-                {{ form.hours }}
+                {{ form.worked_hours }}
+            </td>
+            <td>
+                <ul>
+                    {% for error in form.worked_hours.errors %}
+                    <li>
+                        {{ error }}
+                    </li>
+                    {% endfor %}
+                </ul>
             </td>
         </tr>
         <tr>

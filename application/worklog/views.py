@@ -19,7 +19,10 @@ def worklog_form():
 def worklog_create():
     form = WorkForm(request.form)
 
-    new = WorkDone(form.id.data, form.task.data, form.task_id.data, form.hours.data)
+    if not form.validate():
+        return render_template("/worklog/new.html", form=form)
+
+    new = WorkDone(form.worker_id.data, form.task.data, form.task_id.data, form.worked_hours.data)
 
     db.session().add(new)
     db.session().commit()
@@ -34,6 +37,9 @@ def worklog_edit(work_id):
 
     if  request.method == 'POST':
         editform = EditForm(request.form)
+
+        if not editform.validate():
+            return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=editform)
 
         work.task = editform.task.data
         work.task_id = editform.task_id.data
