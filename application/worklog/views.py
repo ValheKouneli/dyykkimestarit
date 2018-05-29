@@ -1,6 +1,8 @@
-from application import app, db
 from flask import render_template, request, redirect, url_for
+
+from application import app, db
 from application.worklog.models import WorkDone
+from application.worklog.forms import WorkForm
 
 #Listaus
 @app.route("/worklog", methods=["GET"])
@@ -10,17 +12,14 @@ def worklog_index():
 #Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
 def worklog_form():
-    return render_template("worklog/new.html")
+    return render_template("worklog/new.html", form=WorkForm())
 
 #Uuden työtehtävän POST
 @app.route("/worklog/", methods=["POST"])
 def worklog_create():
-    id = request.form.get("id")
-    task = request.form.get("task")
-    task_id = request.form.get("task_id")
-    hours = request.form.get("worked_hours")
+    form = WorkForm(request.form)
 
-    new = WorkDone(id, task, task_id, hours)
+    new = WorkDone(form.id.data, form.task.data, form.task_id.data, form.hours.data)
 
     db.session().add(new)
     db.session().commit()

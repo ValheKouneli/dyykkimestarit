@@ -2,10 +2,44 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('worklog_create') }}">
-    Anna henkilönumerosi: <input type="text" name="id"/>
-    Kuvaile työtehtävän sisältöä: <input type="text" name="task"/>
-    Työtehtävän mahdollinen tunnistenumero: <input type="text" name="task_id"/>
-    Kuinka monta tuntia työskentelit?: <input type="text" name="worked_hours"/>
-    <input type="submit" value="Lisää työtehtävä!" />
+    <table>
+        <tr>
+            <td>
+                {{ form.id.label }}
+            </td>
+            <td>
+                {{ form.id }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task.label }}
+            </td>
+            <td>
+                {{ form.task }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task_id.label }}
+            </td>
+            <td>
+                {{ form.task_id }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.hours.label }}
+            </td>
+            <td>
+                {{ form.hours }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Lisää uusi työtehtävä!"/>
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}
