@@ -1,3 +1,7 @@
 .reunus {
     border: 1px solid black;
 }
+
+.editreadonly {
+    background-color: lightgray;
+}

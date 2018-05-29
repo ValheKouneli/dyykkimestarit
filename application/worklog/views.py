@@ -33,11 +33,11 @@ def worklog_edit(work_id):
     form = EditForm(obj=work)
 
     if  request.method == 'POST':
-        edit = WorkDone.query.get(work_id)
-        edit.worker_id = request.form.get("worker_id")
-        edit.task = request.form.get("task")
-        edit.task_id = request.form.get("task_id")
-        edit.worked_hours = request.form.get("worked_hours")
+        editform = EditForm(request.form)
+
+        work.task = editform.task.data
+        work.task_id = editform.task_id.data
+        work.worked_hours = editform.worked_hours.data
 
         db.session().commit()
 
