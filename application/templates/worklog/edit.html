@@ -1,16 +1,51 @@
 {% extends "layout.html" %}
 
 {% block body %} 
-<form method="POST" action="{{ url_for('worklog_edit', work_id=w.id) }}">
-    <div>
-        Henkilönumerosi: <input style="background-color: grey" type="text" name="worker_id" value="{{ w.worker_id }}" readonly/>
-        Työtehtävän tunnus: <input style="background-color: grey" type="text" name="id" value="{{ w.id }}" readonly />
-    </div>
-    <div>
-        Muokkaa tehtävän kuvausta: <input type=text  name="task" value="{{ w.task }}" />
-        Muokkaa työtehtävän tunnistenumeroa: <input type="text" name="task_id" value="{{ w.task_id }}" />
-        Muokkaa tehtyjä työtunteja: <input type="text" name="worked_hours" value="{{ w.worked_hours }}" />
-        <input type="submit" value="Muokkaa työtehtävää" />
-    </div>
+<form method="POST" action"{{ url_for('worklog_edit', work_id=w.id) }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.id.label }}
+            </td>
+            <td>
+                {{ form.id(readonly=true) }}
+            </td>
+            <td>
+                {{ form.worker_id.label }}
+            </td>
+            <td>
+                {{ form.worker_id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task.label }}
+            </td>
+            <td>
+                {{ form.task }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task_id.label }}
+            </td>
+            <td>
+                {{ form.task_id }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.worked_hours.label }}
+            </td>
+            <td>
+                {{ form.worked_hours }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Muokkaa tehtävää!" />
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}

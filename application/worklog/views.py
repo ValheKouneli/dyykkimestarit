@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 
 from application import app, db
 from application.worklog.models import WorkDone
-from application.worklog.forms import WorkForm
+from application.worklog.forms import WorkForm, EditForm
 
 #Listaus
 @app.route("/worklog", methods=["GET"])
@@ -29,6 +29,9 @@ def worklog_create():
 #Työtehtävän muokkaaminen
 @app.route("/worklog/<work_id>/", methods=["GET", "POST"])
 def worklog_edit(work_id):
+    work = WorkDone.query.get(work_id)
+    form = EditForm(obj=work)
+
     if  request.method == 'POST':
         edit = WorkDone.query.get(work_id)
         edit.worker_id = request.form.get("worker_id")
@@ -40,6 +43,7 @@ def worklog_edit(work_id):
 
         return redirect(url_for("worklog_index"))
     else:
-        return render_template("worklog/edit.html", w = WorkDone.query.get(work_id))
+        
+        return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=form)
 
 

@@ -10,3 +10,17 @@ class WorkForm(FlaskForm):
     class Meta:
         csrf = False
 
+class EditForm(FlaskForm):
+    #Ei muokattavissa
+    worker_id = StringField("Henkilönumerosi: ")
+    id = StringField("Työtehtävän kirjausnumero: ")
+
+    #Muokattavissa
+    task = StringField("Muokkaa työtehtävän kuvausta: ")
+    task_id = StringField("Muokkaa työtehtävän tunnistenumeroa: ")
+    worked_hours = StringField("Muokkaa tehtyjä työtunteja: ")
+
+    class Meta:
+        csrf = False
+
+
