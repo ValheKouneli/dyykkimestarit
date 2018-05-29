@@ -11,6 +11,8 @@ from application import views
 
 from application.worklog import models
 from application.worklog import views
+
 from application.auth import models
+from application.auth import views
 
 db.create_all()
