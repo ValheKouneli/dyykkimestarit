@@ -19,4 +19,4 @@ def auth_login():
             return render_template("auth/loginform.html", form = form, error = "Käyttäjänimi tai salasana väärin")
         
         print("Kirjautuminen onnistui!")
-        return redirect(url_for("index"))
+        return redirect(url_for("worklog_index"))

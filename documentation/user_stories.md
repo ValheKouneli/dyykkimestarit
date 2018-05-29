@@ -28,3 +28,9 @@ Käyttäjänä voin navigoida linkin tai napin avulla yksittäisen jo kirjatun t
 Käyttäjänä voin poistaa linkin tai napin avulla yksittäisen jo kirjatun tehtävän tietokannasta.
 + Voin poistaa työtehtäviä tietokannasta.
 + Voin poistaa vain itse lisäämiäni työtehtäviä tietokannasta.
+
+#### 5. Kirjautuminen
+Käyttäjänä voin kirjautua sivustolle
++ ~~Voin kirjautua sivustolle Kirjaudu -ominaisuuden kautta.~~ *-OK-*
++ Sivuston tiedot näkyvät vain kirjautuneille käyttäjille.
++ Salasanat ja muut kriittiset kirjautumistiedot on suojattu.
