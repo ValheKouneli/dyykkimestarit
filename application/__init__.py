@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 #Herokun ja lokaalin tietokannan määrittelyt
 if os.environ.get("HEROKU"):
-    app.config("SQLALCHEMY_DATABASE_URI") = os.environ.get("DATABASE_URL")
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///dyykki.db"
     app.config["SQLALCHEMY_ECHO"] = True
