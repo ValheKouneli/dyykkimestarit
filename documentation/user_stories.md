@@ -16,17 +16,17 @@ Käyttäjänä voin tarkastella tietokantaan tallennettuja tietoja listaus- tai 
 #### 2. Tiedon lisääminen
 Käyttäjänä voin navigoida linkin avulla uusien suoritettujen työtehtävien kirjaussivustolle ja lisätä siellä kenttiä täyttämällä uuden työtehtävän tietokantaan.
 + ~~Voin lisätä tietoa järjestelmään.~~ *-OK-*
-+ Lisätty tieto on validoitua.
++ ~~Lisätty tieto on validoitua.~~ *-OK-*
 
 #### 3. Tiedon muokkaaminen
 Käyttäjänä voin navigoida linkin tai napin avulla yksittäisen jo kirjatun tehtävän muokkaussivustolle, jonka avulla voin muokata tietokantaan aiemmin lisättyä työtehtävää.
 + ~~Voin muokata tietokantaan tallennettuja työtehtäviä.~~ *-OK-*
 + Voin muokata vain itse kirjaamiani työtehtäviä.
-+ Muokattu tieto on validoitua.
++ ~~Muokattu tieto on validoitua.~~ *-OK-*
 
 #### 4. Tiedon poistaminen
 Käyttäjänä voin poistaa linkin tai napin avulla yksittäisen jo kirjatun tehtävän tietokannasta.
-+ Voin poistaa työtehtäviä tietokannasta.
++ ~~Voin poistaa työtehtäviä tietokannasta.~~ *-OK-*
 + Voin poistaa vain itse lisäämiäni työtehtäviä tietokannasta.
 
 #### 5. Kirjautuminen
