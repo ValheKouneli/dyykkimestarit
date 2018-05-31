@@ -6,7 +6,7 @@ Tietokantasovellus, kesä 2018
 ##### Käyttäjätunnukset:
 Käyttäjätunnus - Salasana
 
-*Admin - admin123*
+*Admin - admin123*  
 *Tester - tester123*
 
 Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
