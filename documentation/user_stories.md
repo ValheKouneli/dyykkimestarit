@@ -32,5 +32,5 @@ Käyttäjänä voin poistaa linkin tai napin avulla yksittäisen jo kirjatun teh
 #### 5. Kirjautuminen
 Käyttäjänä voin kirjautua sivustolle.
 + ~~Voin kirjautua sivustolle Kirjaudu -ominaisuuden kautta.~~ *-OK-*
-+ Sivuston tiedot näkyvät vain kirjautuneille käyttäjille.
++ ~~Sivuston tiedot näkyvät vain kirjautuneille käyttäjille.~~ *-OK-*
 + Salasanat ja muut kriittiset kirjautumistiedot on suojattu.

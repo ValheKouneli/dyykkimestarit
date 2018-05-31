@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required
 
 from application import app, db
 from application.worklog.models import WorkDone
@@ -6,16 +7,19 @@ from application.worklog.forms import WorkForm, EditForm
 
 #Listaus
 @app.route("/worklog", methods=["GET"])
+@login_required
 def worklog_index():
     return render_template("worklog/list.html", worklog = WorkDone.query.all())
 
 #Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
+@login_required
 def worklog_form():
     return render_template("worklog/new.html", form=WorkForm())
 
 #Uuden työtehtävän POST
 @app.route("/worklog/", methods=["POST"])
+@login_required
 def worklog_create():
     form = WorkForm(request.form)
 
@@ -32,6 +36,7 @@ def worklog_create():
 
 #Työtehtävän muokkaaminen
 @app.route("/worklog/<work_id>/", methods=["GET", "POST"])
+@login_required
 def worklog_edit(work_id):
     work = WorkDone.query.get(work_id)
     form = EditForm(obj=work)
