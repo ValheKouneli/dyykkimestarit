@@ -59,4 +59,14 @@ def worklog_edit(work_id):
     else:
         return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=form)
 
+#Työtehtävän poistaminen
+@login_required
+@app.route("/worklog/<work_id>/delete", methods=["GET", "POST"])
+def worklog_delete(work_id):
+    work = WorkDone.query.get(work_id)
+
+    db.session().delete(work)
+    db.session().commit()
+
+    return redirect(url_for("worklog_index"))
 
