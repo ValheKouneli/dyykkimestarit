@@ -15,6 +15,7 @@
         <li class="navbarlist"><a href="{{ url_for('auth_logout') }}">Kirjaudu ulos - {{ current_user.name }}</a></li>
         {% else %}
         <li class="navbarlist"><a href="{{ url_for('auth_login') }}">Kirjaudu sisään</a></li>
+        <li class="navbarlist"><a href="{{ url_for('auth_register') }}">Rekisteröidy</a></li>
         {% endif %}
       </ul>
     </div>

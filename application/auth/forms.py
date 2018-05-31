@@ -7,3 +7,12 @@ class LoginForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class RegisterForm(FlaskForm):
+    username = StringField("Käyttäjänimi:", [validators.Length(min=5)])
+    password = PasswordField("Salasana:", [validators.Length(min=5)])
+    name = StringField("Nimesi:", [validators.Length(min=5)])
+    certificates = StringField("Käymäsi kurssit (erota pilkulla):", [validators.Required(message="Kenttä ei voi olla tyhjä")])
+
+    class Meta:
+        csrf = False
