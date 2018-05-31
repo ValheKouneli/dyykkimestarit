@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.worklog.models import WorkDone
@@ -27,7 +27,8 @@ def worklog_create():
     if not form.validate():
         return render_template("/worklog/new.html", form=form)
 
-    new = WorkDone(form.worker_id.data, form.task.data, form.task_id.data, form.worked_hours.data)
+    new = WorkDone(1, form.task.data, form.task_id.data, form.worked_hours.data)
+    new.account_id = current_user.id    
 
     db.session().add(new)
     db.session().commit()
