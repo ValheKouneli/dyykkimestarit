@@ -30,7 +30,7 @@ Käyttäjänä voin poistaa linkin tai napin avulla yksittäisen jo kirjatun teh
 + Voin poistaa vain itse lisäämiäni työtehtäviä tietokannasta.
 
 #### 5. Kirjautuminen
-Käyttäjänä voin kirjautua sivustolle
+Käyttäjänä voin kirjautua sivustolle.
 + ~~Voin kirjautua sivustolle Kirjaudu -ominaisuuden kautta.~~ *-OK-*
 + Sivuston tiedot näkyvät vain kirjautuneille käyttäjille.
 + Salasanat ja muut kriittiset kirjautumistiedot on suojattu.

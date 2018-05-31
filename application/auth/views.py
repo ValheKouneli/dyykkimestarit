@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_user, logout_user
 
 from application import app
 from application.auth.models import User
@@ -9,7 +10,7 @@ def auth_login():
     if request.method == "GET":
         return render_template("auth/loginform.html", form = LoginForm() )
     
-    if request.method == "POST":
+    else:
         form = LoginForm(request.form)
         if not form.validate():
             return render_template("auth/loginform.html", form = form )
@@ -18,5 +19,10 @@ def auth_login():
         if not user:
             return render_template("auth/loginform.html", form = form, error = "Käyttäjänimi tai salasana väärin")
         
-        print("Kirjautuminen onnistui!")
+        login_user(user)
         return redirect(url_for("worklog_index"))
+
+@app.route("/auth/logout")
+def auth_logout():
+    logout_user()
+    return redirect(url_for("index"))

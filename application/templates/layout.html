@@ -11,7 +11,11 @@
     <ul>
       <li><a href="{{ url_for('worklog_index') }}">Listaus</a></li>
       <li><a href="{{ url_for('worklog_form') }}">Lisää uusi</a></li>
+      {% if current_user.is_authenticated %}
+      <li><a href="{{ url_for('auth_logout') }}">Kirjaudu ulos - {{ current_user.name }}</a></li>
+      {% else %}
       <li><a href="{{ url_for('auth_login') }}">Kirjaudu sisään</a></li>
+      {% endif %}
     </ul>
 
     {% block body %}
