@@ -15,7 +15,7 @@ class User(db.Model):
     certificates = db.Column(db.String(144), nullable=False)
 
     #Tehtävät
-    work = db.Relationship("WorkDone", backref='account', lazy=True)
+    work = db.relationship("WorkDone", backref='account', lazy=True)
 
     def __init__(self, username, password, name, certificates):
         self.username = username
