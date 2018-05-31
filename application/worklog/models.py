@@ -35,5 +35,5 @@ class UpcomingWork(db.Model):
 #Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
 class PlannedWork(db.Model):
     key_id = db.Column(db.Integer, primary_key=True)
-    worker_id = db.Column(db.Integer, db.ForeignKey("employees.id"), nullable=False)
+    worker_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False)
