@@ -3,6 +3,12 @@ Tietokantasovellus, kesä 2018
 
 [Heroku](https://dyykkitsoha.herokuapp.com/)
 
+##### Käyttäjätunnukset:
+Käyttäjätunnus - Salasana
+
+*Admin - admin123*
+*Tester - tester123*
+
 Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
 
 [User Storyt](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
