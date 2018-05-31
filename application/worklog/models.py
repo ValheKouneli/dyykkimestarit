@@ -6,8 +6,9 @@ class WorkDone(db.Model):
     date_created = db.Column(db.Date, default=db.func.current_date())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    #worker_id myöhemmin foreign_keyksi kun employees tietokanta tulee käyttöön
-    worker_id = db.Column(db.Integer, nullable=False)
+    #Kirjauksen tehneen käyttäjän id
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
+
     task = db.Column(db.String(144), nullable=False)
     task_id = db.Column(db.Integer, nullable=True)
     worked_hours = db.Column(db.Integer, nullable=False)
@@ -24,6 +25,7 @@ class UpcomingWork(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     date = db.Column(db.Date, nullable=False)
+    first_worker = db.Column(db.Integer, nullable=False)
     second_worker = db.Column(db.Integer, nullable=True)
     hours = db.Column(db.Integer, nullable=False)
     def __init__(self, name, date, second_worker, hours):
@@ -34,6 +36,6 @@ class UpcomingWork(db.Model):
 
 #Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
 class PlannedWork(db.Model):
-    key_id = db.Column(db.Integer, primary_key=True)
-    # worker_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False)
