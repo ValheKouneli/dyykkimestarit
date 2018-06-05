@@ -6,6 +6,12 @@
         <h3>Tervetuloa dyykkimestareiden työaikakirjaukseen</h3>
     </div>
     <div>
+        <h4>Omat kirjauksesi:</h4>
+        <ul>
+            <li>{{ user_hours }} työtuntia</li>
+        </ul>
+    </div>
+    <div>
         <h4>Tähän mennessä järjestelmään kirjattu:</h4>
         <ul>
             {% for count in total_work %}

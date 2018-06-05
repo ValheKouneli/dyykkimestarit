@@ -15,8 +15,8 @@ class WorkDone(db.Model):
     task_id = db.Column(db.Integer, nullable=True)
     worked_hours = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, worker_id, task, task_id, worked_hours):
-        self.worker_id = worker_id
+    def __init__(self, account_id, task, task_id, worked_hours):
+        self.account_id = account_id
         self.task = task
         self.task_id = task_id
         self.worked_hours = worked_hours
@@ -31,6 +31,23 @@ class WorkDone(db.Model):
         response = []
         for row in res:
             response.append({"total_hours":row[0]})
+
+        return response
+
+    #Kirjautuneen käyttäjän tunnit
+    @staticmethod
+    def user_hours(user):
+        stmt = text("SELECT SUM(worked_hours) FROM work_done"
+                    " LEFT JOIN account ON account.id = work_done.account_id"
+                    " WHERE (account.id = :id)").params(id=user.id)
+
+        print(stmt)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"user_hours":row[0]})
 
         return response
 

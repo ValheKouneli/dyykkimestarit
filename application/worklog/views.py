@@ -14,7 +14,7 @@ def worklog_stats():
     u = User.query.get(current_user.id)
 
     return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
-                            total_hours=WorkDone.total_hours() )
+                            total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u) )
 
 #Listaus
 @app.route("/worklog/list", methods=["GET"])
