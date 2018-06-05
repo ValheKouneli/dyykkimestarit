@@ -1,5 +1,7 @@
 from application import db
 
+from sqlalchemy.sql import text
+
 #Tehdyt työtehtävät tietokantataulu
 class WorkDone(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,6 +20,21 @@ class WorkDone(db.Model):
         self.task = task
         self.task_id = task_id
         self.worked_hours = worked_hours
+
+    #Kaikki tunnit, olisi varmaan generoitavissa alchemylla mutta SQL harjoittelua
+    @staticmethod
+    def total_hours():
+        stmt = text("SELECT SUM(worked_hours) FROM work_done")
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"total_hours":row[0]})
+
+        return response
+
+
 
 #Tulevat kurssit - Hahmotelma
 class UpcomingWork(db.Model):

@@ -3,12 +3,23 @@ from flask_login import login_required, current_user
 
 from application import app, db
 from application.worklog.models import WorkDone
+from application.auth.models import User
 from application.worklog.forms import WorkForm, EditForm
 
-#Listaus
+#Etusivu
 @app.route("/worklog", methods=["GET"])
 @login_required
-def worklog_index():
+def worklog_stats():
+    #Kirjautunut käyttäjä
+    u = User.query.get(current_user.id)
+
+    return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
+                            total_hours=WorkDone.total_hours() )
+
+#Listaus
+@app.route("/worklog/list", methods=["GET"])
+@login_required
+def worklog_list():
     return render_template("worklog/list.html", worklog = WorkDone.query.all())
 
 #Uuden työtehtävän kirjaussivu
@@ -33,7 +44,7 @@ def worklog_create():
     db.session().add(new)
     db.session().commit()
 
-    return redirect(url_for("worklog_index"))
+    return redirect(url_for("worklog_list"))
 
 #Työtehtävän muokkaaminen
 @app.route("/worklog/<work_id>/", methods=["GET", "POST"])
@@ -55,7 +66,7 @@ def worklog_edit(work_id):
 
         db.session().commit()
 
-        return redirect(url_for("worklog_index"))
+        return redirect(url_for("worklog_list"))
     else:
         return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=form)
 
@@ -68,5 +79,5 @@ def worklog_delete(work_id):
     db.session().delete(work)
     db.session().commit()
 
-    return redirect(url_for("worklog_index"))
+    return redirect(url_for("worklog_list"))
 

@@ -1,5 +1,7 @@
 from application import db
 
+from sqlalchemy.sql import text
+
 class User(db.Model):
 
     __tablename__ = "account"
@@ -35,4 +37,18 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    @staticmethod
+    def total_tasks():
+        stmt = text("SELECT COUNT(account.id) FROM account"
+                    " LEFT JOIN work_done ON work_done.account_id = account.id")
+        
+        res = db.engine.execute(stmt)
+        
+        response = []
+        for row in res:
+            response.append({"count":row[0] })
+
+        return response
+        
 

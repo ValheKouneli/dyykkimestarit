@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div>
+        <h1>Hei {{ user.name }}!</h1>
+        <h3>Tervetuloa dyykkimestareiden työaikakirjaukseen</h3>
+    </div>
+    <div>
+        <h4>Tähän mennessä järjestelmään kirjattu:</h4>
+        <ul>
+            {% for count in total_work %}
+            <li>{{ count.count }} työtehtävää</li>
+            {% endfor %}
+            {% for hours in total_hours %}
+            <li>{{ hours.total_hours }} työtuntia</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
