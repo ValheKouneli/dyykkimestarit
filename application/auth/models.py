@@ -50,5 +50,17 @@ class User(db.Model):
             response.append({"count":row[0] })
 
         return response
-        
 
+    @staticmethod
+    def user_tasks(user):
+        stmt = text("SELECT COUNT(account.id) FROM account"
+                " LEFT JOIN work_done ON work_done.account_id = account.id"
+                " WHERE (account.id = :id)").params(id=user.id)
+
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"tasks":row[0]})
+
+        return response

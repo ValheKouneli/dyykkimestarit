@@ -8,7 +8,12 @@
     <div>
         <h4>Omat kirjauksesi:</h4>
         <ul>
-            <li>{{ user_hours }} työtuntia</li>
+            {% for task in user_work %}
+            <li>{{ task.tasks }} työtehtävää</li>
+            {% endfor %}
+            {% for hour in user_hours %}
+            <li>{{ hour.user_hours }} työtuntia</li>
+            {% endfor %}
         </ul>
     </div>
     <div>
