@@ -1,24 +1,28 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table class="reunus" >
-    <tr>
-      <th class="reunus">Päivämäärä</th>
-      <th class="reunus">Työntekijän ID</th>
-      <th class="reunus">Tehtävän kuvaus</th>
-      <th class="reunus">Tehtävän ID</th>
-      <th class="reunus"> Työtunnit</th>
-    </tr>
-    {% for work in worklog %}
-    <tr style="text-align: center; vertical-align: middle;" >
-      <td>{{ work.date_created }}</td>
-      <td>{{ work.account_id }}</td>
-      <td>{{ work.task }}</td>
-      <td>{{ work.task_id }}</td>
-      <td>{{ work.worked_hours }}</td>
-      <td><button type="button" onclick="location.href='/worklog/{{work.id}}'" >Muokkaa</button></td>
-      <td><button class="deletebtn" type="button" onclick="location.href='/worklog/{{work.id}}/delete'">Poista</button></td>
-    </tr>
-    {% endfor %}
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th>Päivämäärä</th>
+        <th>Työntekijän ID</th>
+        <th>Tehtävän kuvaus</th>
+        <th>Tehtävän ID</th>
+        <th> Työtunnit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for work in worklog %}
+      <tr>
+        <td>{{ work.date_created }}</td>
+        <td>{{ work.account_id }}</td>
+        <td>{{ work.task }}</td>
+        <td>{{ work.task_id }}</td>
+        <td>{{ work.worked_hours }}</td>
+        <td><button type="button" onclick="location.href='/worklog/{{work.id}}'" >Muokkaa</button></td>
+        <td><button class="deletebtn" type="button" onclick="location.href='/worklog/{{work.id}}/delete'">Poista</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
 {% endblock %}
