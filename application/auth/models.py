@@ -40,8 +40,8 @@ class User(db.Model):
 
     @staticmethod
     def total_tasks():
-        stmt = text("SELECT COUNT(account.id) FROM account"
-                    " LEFT JOIN work_done ON work_done.account_id = account.id")
+        stmt = text("SELECT COUNT(work_done.id) FROM work_done"
+                    " LEFT JOIN account ON account.id = work_done.account_id")
         
         res = db.engine.execute(stmt)
         
@@ -53,8 +53,8 @@ class User(db.Model):
 
     @staticmethod
     def user_tasks(user):
-        stmt = text("SELECT COUNT(account.id) FROM account"
-                " LEFT JOIN work_done ON work_done.account_id = account.id"
+        stmt = text("SELECT COUNT(work_done.id) FROM work_done"
+                " LEFT JOIN account ON account.id = work_done.account_id"
                 " WHERE (account.id = :id)").params(id=user.id)
 
         res = db.engine.execute(stmt)
