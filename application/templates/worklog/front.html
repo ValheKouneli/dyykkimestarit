@@ -1,30 +1,32 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<div align="center">
     <div>
         <h1>Hei {{ user.name }}!</h1>
         <h3>Tervetuloa dyykkimestareiden työaikakirjaukseen</h3>
     </div>
     <div>
         <h4>Omat kirjauksesi:</h4>
-        <ul>
+        <ul class="list-group">
             {% for task in user_work %}
-            <li>{{ task.tasks }} työtehtävää</li>
+            <li class="list-group-item">{{ task.tasks }} työtehtävää</li>
             {% endfor %}
             {% for hour in user_hours %}
-            <li>{{ hour.user_hours }} työtuntia</li>
+            <li class="list-group-item">{{ hour.user_hours }} työtuntia</li>
             {% endfor %}
         </ul>
     </div>
     <div>
         <h4>Tähän mennessä järjestelmään kirjattu:</h4>
-        <ul>
+        <ul class="list-group">
             {% for count in total_work %}
-            <li>{{ count.count }} työtehtävää</li>
+            <li class="list-group-item">{{ count.count }} työtehtävää</li>
             {% endfor %}
             {% for hours in total_hours %}
-            <li>{{ hours.total_hours }} työtuntia</li>
+            <li class="list-group-item">{{ hours.total_hours }} työtuntia</li>
             {% endfor %}
         </ul>
     </div>
+</div>
 {% endblock %}

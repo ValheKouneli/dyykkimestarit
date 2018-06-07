@@ -2,54 +2,56 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('worklog_create') }}">
-    <table>
-        <tr>
-            <td>
-                {{ form.task.label }}
-            </td>
-            <td>
-                {{ form.task }}
-            </td>
-            <td>
-                <ul>
-                    {% for error in form.task.errors %}
-                    <li>
-                        {{ error }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ form.task_id.label }}
-            </td>
-            <td>
-                {{ form.task_id }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ form.worked_hours.label }}
-            </td>
-            <td>
-                {{ form.worked_hours }}
-            </td>
-            <td>
-                <ul>
-                    {% for error in form.worked_hours.errors %}
-                    <li>
-                        {{ error }}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Lisää uusi työtehtävä!"/>
-            </td>
-        </tr>
-    </table>
+    <div class="form-group" align="center">
+        <table>
+            <tr>
+                <td>
+                    {{ form.task.label }}
+                </td>
+                <td>
+                    {{ form.task }}
+                </td>
+                <td>
+                    <ul>
+                        {% for error in form.task.errors %}
+                        <li>
+                            {{ error }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form.task_id.label }}
+                </td>
+                <td>
+                    {{ form.task_id }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form.worked_hours.label }}
+                </td>
+                <td>
+                    {{ form.worked_hours }}
+                </td>
+                <td>
+                    <ul>
+                        {% for error in form.worked_hours.errors %}
+                        <li>
+                            {{ error }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="submit" value="Lisää uusi työtehtävä!"/>
+                </td>
+            </tr>
+        </table>
+    </div>
 </form>
 {% endblock %}

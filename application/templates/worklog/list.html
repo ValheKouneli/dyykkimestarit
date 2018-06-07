@@ -19,8 +19,8 @@
         <td>{{ work.task }}</td>
         <td>{{ work.task_id }}</td>
         <td>{{ work.worked_hours }}</td>
-        <td><button type="button" onclick="location.href='/worklog/{{work.id}}'" >Muokkaa</button></td>
-        <td><button class="deletebtn" type="button" onclick="location.href='/worklog/{{work.id}}/delete'">Poista</button></td>
+        <td><button class="btn btn-info" type="button" onclick="location.href='/worklog/{{work.id}}'" >Muokkaa</button></td>
+        <td><button class="btn btn-danger" type="button" onclick="location.href='/worklog/{{work.id}}/delete'">Poista</button></td>
       </tr>
       {% endfor %}
     </tbody>
