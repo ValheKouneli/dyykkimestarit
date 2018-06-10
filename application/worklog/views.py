@@ -3,8 +3,9 @@ from flask_login import login_required, current_user
 
 from application import app, db
 from application.worklog.models import WorkDone
+from application.worklog.models import UpcomingWork
 from application.auth.models import User
-from application.worklog.forms import WorkForm, EditForm, SingleForm
+from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingForm
 
 #Etusivu
 @app.route("/worklog", methods=["GET"])
@@ -12,10 +13,11 @@ from application.worklog.forms import WorkForm, EditForm, SingleForm
 def worklog_stats():
     #Kirjautunut käyttäjä
     u = User.query.get(current_user.id)
+    up = UpcomingWork.query.filter_by(account_id = current_user.id)
 
     return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
                             total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u),
-                            user_work = User.user_tasks(u) )
+                            user_work = User.user_tasks(u), upcoming_work = up )
 
 #Yksittäinen työtehtävä
 @app.route("/worklog/<work_id>/", methods=["GET"])
@@ -90,4 +92,26 @@ def worklog_delete(work_id):
     db.session().commit()
 
     return redirect(url_for("worklog_list"))
+
+#Suunnitellun työtehtävän luominen
+#Admin restricted - WIP
+@app.route("/worklog/upcoming/", methods=["GET", "POST"])
+@login_required
+def worklog_upcoming():
+
+    if request.method == 'GET':
+        form = UpcomingForm()
+        users = User.query.all()
+        form.account_id.choices = [(a.id, a.name) for a in users]
+        return render_template("worklog/upcoming.html", form = form)
+
+    else:
+        upcomingform = UpcomingForm(request.form)
+
+        new = UpcomingWork(upcomingform.account_id.data, upcomingform.name.data, upcomingform.date.data, upcomingform.hours.data)  
+
+        db.session().add(new)
+        db.session().commit()
+
+        return redirect(url_for("worklog_list"))
 

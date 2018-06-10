@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, validators
+from wtforms import StringField, IntegerField, validators, DateField, SelectField
 
 class WorkForm(FlaskForm):
     #IntegerField hoitaa validoinnin kokonaisluvuksi
@@ -31,6 +31,15 @@ class SingleForm(FlaskForm):
     task = StringField("Työtehtävän kuvaus: ")
     task_id = StringField("Työtehtävän tunnistenumero: ")
     worked_hours = IntegerField("Tehtävälle kirjatut työtunnit: ")
+
+    class Meta:
+        csrf = False
+
+class UpcomingForm(FlaskForm):
+    name = StringField("Anna työtehtävälle nimi: ", [validators.Length(min=5)])
+    date = DateField("Anna työtehtävän päivämäärä muodossa vuosi-kuukausi-päivä: ")
+    hours = IntegerField("Arvioi työtehtävän kesto tunneissa: ")
+    account_id = SelectField(u'User', coerce=int)
 
     class Meta:
         csrf = False

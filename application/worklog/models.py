@@ -51,16 +51,15 @@ class WorkDone(db.Model):
 
         return response
 
-
-
-#Tulevat kurssit - Hahmotelma
+#Tulevat kurssit
 class UpcomingWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    account_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
+    account_id = db.Column(db.Integer, nullable=False)
 
     name = db.Column(db.String(144), nullable=False)
     date = db.Column(db.Date, nullable=False)
     hours = db.Column(db.Integer, nullable=False)
+
     def __init__(self, account_id, name, date, hours):
         self.account_id = account_id
         self.name = name
