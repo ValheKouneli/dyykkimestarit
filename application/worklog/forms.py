@@ -23,4 +23,14 @@ class EditForm(FlaskForm):
     class Meta:
         csrf = False
 
+#Toteutettu readonly formina yksinkertaisuuden ja yhtenevien näkymien vuosi
+class SingleForm(FlaskForm):
+    #readonly
+    account_id = IntegerField("Kirjaajan henkilönumero: ")
+    id = IntegerField("Työtehtävän kirjausnumero: ")
+    task = StringField("Työtehtävän kuvaus: ")
+    task_id = StringField("Työtehtävän tunnistenumero: ")
+    worked_hours = IntegerField("Tehtävälle kirjatut työtunnit: ")
 
+    class Meta:
+        csrf = False

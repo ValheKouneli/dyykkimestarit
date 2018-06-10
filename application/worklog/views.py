@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from application import app, db
 from application.worklog.models import WorkDone
 from application.auth.models import User
-from application.worklog.forms import WorkForm, EditForm
+from application.worklog.forms import WorkForm, EditForm, SingleForm
 
 #Etusivu
 @app.route("/worklog", methods=["GET"])
@@ -16,6 +16,15 @@ def worklog_stats():
     return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
                             total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u),
                             user_work = User.user_tasks(u) )
+
+#Yksittäinen työtehtävä
+@app.route("/worklog/<work_id>/", methods=["GET"])
+@login_required
+def worklog_single(work_id):
+    work = WorkDone.query.get(work_id)
+    form = SingleForm(obj=work)
+
+    return render_template("worklog/single.html", w = WorkDone.query.get(work_id), form=form)
 
 #Listaus
 @app.route("/worklog/list", methods=["GET"])
@@ -48,7 +57,7 @@ def worklog_create():
     return redirect(url_for("worklog_list"))
 
 #Työtehtävän muokkaaminen
-@app.route("/worklog/<work_id>/", methods=["GET", "POST"])
+@app.route("/worklog/<work_id>/edit", methods=["GET", "POST"])
 @login_required
 def worklog_edit(work_id):
     work = WorkDone.query.get(work_id)
@@ -72,8 +81,8 @@ def worklog_edit(work_id):
         return render_template("worklog/edit.html", w = WorkDone.query.get(work_id), form=form)
 
 #Työtehtävän poistaminen
-@login_required
 @app.route("/worklog/<work_id>/delete", methods=["GET", "POST"])
+@login_required
 def worklog_delete(work_id):
     work = WorkDone.query.get(work_id)
 

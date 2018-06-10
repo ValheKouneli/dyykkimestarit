@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<form method="POST" action"{{ url_for('worklog_single', work_id=w.id) }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.id.label }}
+            </td>
+            <td>
+                {{ form.id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.account_id.label }}
+            </td>
+            <td>
+                {{ form.account_id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task.label }}
+            </td>
+            <td>
+                {{ form.task(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.task_id.label }}
+            </td>
+            <td>
+                {{ form.task_id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.worked_hours.label }}
+            </td>
+            <td>
+                {{ form.worked_hours(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success btn-lg" type="button" onclick="location.href='/worklog/list'" >Palaa takaisin listaukseen</button>
+            </td>
+            <td>
+                <button class="btn btn-info" type="button" onclick="location.href='/worklog/{{w.id}}/edit'" >Muokkaa</button>
+                <button class="btn btn-danger" type="button" onclick="location.href='/worklog/{{w.id}}/delete'">Poista</button>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
