@@ -13,11 +13,10 @@ from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingFo
 def worklog_stats():
     #Kirjautunut käyttäjä
     u = User.query.get(current_user.id)
-    up = UpcomingWork.query.filter_by(account_id = current_user.id)
 
     return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
                             total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u),
-                            user_work = User.user_tasks(u), upcoming_work = up )
+                            user_work = User.user_tasks(u), upcoming_work = UpcomingWork.select_filtered(u) )
 
 #Yksittäinen työtehtävä
 @app.route("/worklog/<work_id>/", methods=["GET"])

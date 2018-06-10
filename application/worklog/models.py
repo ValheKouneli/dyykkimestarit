@@ -66,6 +66,20 @@ class UpcomingWork(db.Model):
         self.date = date
         self.hours = hours
 
+    @staticmethod
+    def select_filtered(user):
+        stmt = text("SELECT * FROM upcoming_work"
+                    " WHERE (account_id = :id)").params(id=user.id)
+        
+        res = db.engine.execute(stmt)
+
+        response = []
+
+        for row in res:
+            response.append({ "id":row[0], "account_id":row[1], "name":row[2], "date":row[3], "hours":row[4] })
+
+        return response
+
 #Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
 class PlannedWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
