@@ -10,21 +10,22 @@
         <h4>Omat kirjauksesi:</h4>
         <ul class="list-group">
             {% for task in user_work %}
-            <li class="list-group-item">{{ task.tasks }} työtehtävää</li>
+            <li class="list-group-item list-group-item-success">{{ task.tasks }} työtehtävää</li>
             {% endfor %}
             {% for hour in user_hours %}
-            <li class="list-group-item">{{ hour.user_hours }} työtuntia</li>
+            <li class="list-group-item list-group-item-success">{{ hour.user_hours }} työtuntia</li>
             {% endfor %}
         </ul>
     </div>
+    <p></p>
     <div>
         <h4>Tähän mennessä järjestelmään kirjattu:</h4>
         <ul class="list-group">
             {% for count in total_work %}
-            <li class="list-group-item">{{ count.count }} työtehtävää</li>
+            <li class="list-group-item list-group-item-warning">{{ count.count }} työtehtävää</li>
             {% endfor %}
             {% for hours in total_hours %}
-            <li class="list-group-item">{{ hours.total_hours }} työtuntia</li>
+            <li class="list-group-item list-group-item-warning">{{ hours.total_hours }} työtuntia</li>
             {% endfor %}
         </ul>
     </div>

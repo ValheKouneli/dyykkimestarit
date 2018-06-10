@@ -10,6 +10,8 @@
             <td>
                 {{ form.id(readonly=true, class_="") }}
             </td>
+        </tr>
+        <tr>
             <td>
                 {{ form.account_id.label }}
             </td>
@@ -61,7 +63,8 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Muokkaa tehtävää!" />
+                <input class="btn btn-info btn-lg" type="submit" value="Muokkaa tehtävää!" />
+                <button class="btn btn-warning btn-lg" type="button" onclick="location.href='/worklog/{{w.id}}/'" >Peruuta</button>
             </td>
         </tr>
     </table>

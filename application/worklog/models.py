@@ -56,16 +56,15 @@ class WorkDone(db.Model):
 #Tulevat kurssit - Hahmotelma
 class UpcomingWork(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    account_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
 
     name = db.Column(db.String(144), nullable=False)
     date = db.Column(db.Date, nullable=False)
-    first_worker = db.Column(db.Integer, nullable=False)
-    second_worker = db.Column(db.Integer, nullable=True)
     hours = db.Column(db.Integer, nullable=False)
-    def __init__(self, name, date, second_worker, hours):
+    def __init__(self, account_id, name, date, hours):
+        self.account_id = account_id
         self.name = name
         self.date = date
-        self.second_worker = second_worker
         self.hours = hours
 
 #Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
