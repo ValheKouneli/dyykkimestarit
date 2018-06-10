@@ -32,7 +32,7 @@ def worklog_single(work_id):
 @app.route("/worklog/list", methods=["GET"])
 @login_required
 def worklog_list():
-    return render_template("worklog/list.html", worklog = WorkDone.query.all())
+    return render_template("worklog/list.html", worklog = WorkDone.query.filter_by(account_id = current_user.id) )
 
 #Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
