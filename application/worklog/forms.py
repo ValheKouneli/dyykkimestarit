@@ -35,10 +35,11 @@ class SingleForm(FlaskForm):
     class Meta:
         csrf = False
 
+#Tulevat työtehtäväts
 class UpcomingForm(FlaskForm):
     name = StringField("Anna työtehtävälle nimi: ", [validators.Length(min=5)])
-    date = DateField("Anna työtehtävän päivämäärä muodossa vuosi-kuukausi-päivä: ")
-    hours = IntegerField("Arvioi työtehtävän kesto tunneissa: ")
+    date = DateField("Anna työtehtävän päivämäärä muodossa päivä.kuukausi.vuosi: ", format='%d.%m.%Y', render_kw={"placeholder": "01.01.1970"})
+    hours = IntegerField("Arvioi työtehtävän kesto tunneissa: ", [validators.Required(message="Syötä työtunnit!")])
     account_id = SelectField(u'Työlle suunniteltu työntekijä: ', coerce=int)
 
     class Meta:

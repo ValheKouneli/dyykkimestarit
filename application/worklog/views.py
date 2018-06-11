@@ -98,14 +98,20 @@ def worklog_delete(work_id):
 @login_required
 def worklog_upcoming():
 
+    form = UpcomingForm()
+    users = User.query.all()
+    form.account_id.choices = [(a.id, a.name) for a in users]
+
     if request.method == 'GET':
-        form = UpcomingForm()
-        users = User.query.all()
-        form.account_id.choices = [(a.id, a.name) for a in users]
         return render_template("worklog/upcoming.html", form = form)
 
     else:
         upcomingform = UpcomingForm(request.form)
+        upcomingform.account_id.choices = [(a.id, a.name) for a in users]
+
+        #Validoinnin tarkastus
+        if not upcomingform.validate():
+            return render_template("worklog/upcoming.html", form = upcomingform)
 
         new = UpcomingWork(upcomingform.account_id.data, upcomingform.name.data, upcomingform.date.data, upcomingform.hours.data)  
 
