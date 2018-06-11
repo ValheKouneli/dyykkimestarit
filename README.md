@@ -9,7 +9,7 @@ Käyttäjätunnus - Salasana
 *admin - admin123*  
 *tester - tester123*
 
-Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä
+Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä.
 
 Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
 
