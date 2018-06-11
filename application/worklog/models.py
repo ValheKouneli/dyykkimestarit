@@ -66,6 +66,7 @@ class UpcomingWork(db.Model):
         self.date = date
         self.hours = hours
 
+    #Olisi ehkä toteutettavissa ormin kautta kuten toinenkin, mutta halusin verrata filter_by ja WHERE tuloksia
     @staticmethod
     def select_filtered(user):
         stmt = text("SELECT * FROM upcoming_work"

@@ -39,7 +39,7 @@ def worklog_list():
 def worklog_form():
     return render_template("worklog/new.html", form=WorkForm())
 
-#Uuden työtehtävän POST
+#Uuden työtehtävän POST - voisi yhdistää GET:iin, mutta metodien selkeyden vuoksi jätetään tekemättä
 @app.route("/worklog/", methods=["POST"])
 @login_required
 def worklog_create():
@@ -100,6 +100,7 @@ def worklog_upcoming():
 
     form = UpcomingForm()
     users = User.query.all()
+    #Generoi drop downiin käyttäjät
     form.account_id.choices = [(a.id, a.name) for a in users]
 
     if request.method == 'GET':
@@ -107,6 +108,7 @@ def worklog_upcoming():
 
     else:
         upcomingform = UpcomingForm(request.form)
+        #Generoitava käyttäjät ennen validointia, muuten NoneType error!
         upcomingform.account_id.choices = [(a.id, a.name) for a in users]
 
         #Validoinnin tarkastus

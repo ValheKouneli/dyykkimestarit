@@ -11,7 +11,7 @@ class WorkForm(FlaskForm):
         csrf = False
 
 class EditForm(FlaskForm):
-    #Ei muokattavissa
+    #Ei muokattavissa - readonly
     account_id = IntegerField("Henkilönumerosi: ")
     id = IntegerField("Työtehtävän kirjausnumero: ")
 
@@ -25,7 +25,7 @@ class EditForm(FlaskForm):
 
 #Toteutettu readonly formina yksinkertaisuuden ja yhtenevien näkymien vuosi
 class SingleForm(FlaskForm):
-    #readonly
+    #Ei muokattavissa - readonly
     account_id = IntegerField("Kirjaajan henkilönumero: ")
     id = IntegerField("Työtehtävän kirjausnumero: ")
     task = StringField("Työtehtävän kuvaus: ")
@@ -35,7 +35,7 @@ class SingleForm(FlaskForm):
     class Meta:
         csrf = False
 
-#Tulevat työtehtäväts
+#Tulevat työtehtävät
 class UpcomingForm(FlaskForm):
     name = StringField("Anna työtehtävälle nimi: ", [validators.Length(min=5)])
     date = DateField("Anna työtehtävän päivämäärä muodossa päivä.kuukausi.vuosi: ", format='%d.%m.%Y', render_kw={"placeholder": "01.01.1970"})
