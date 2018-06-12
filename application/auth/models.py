@@ -1,6 +1,7 @@
-from application import db
+from application import db, bcrypt
 
 from sqlalchemy.sql import text
+from sqlalchemy.ext.hybrid import hybrid_property
 
 class User(db.Model):
 
@@ -9,8 +10,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     #Kirjautumistiedot
-    username = db.Column(db.String(144), nullable=False)
-    password = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), unique=True, nullable=False)
+    _password = db.Column(db.String(144), nullable=False)
 
     #Muut tiedot
     name = db.Column(db.String(144), nullable=False)
@@ -19,9 +20,9 @@ class User(db.Model):
     #Tehtävät
     work = db.relationship("WorkDone", backref='account', lazy=True)
 
-    def __init__(self, username, password, name, certificates):
+    def __init__(self, username, plaintext_password, name, certificates):
         self.username = username
-        self.password = password
+        self._password = plaintext_password
 
         self.name = name
         self.certificates = certificates
@@ -37,6 +38,19 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    #Salasanan kryptaus
+    @hybrid_property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def set_password(self, plaintext):
+        self._password = bcrypt.generate_password_hash(plaintext, 15).decode('utf-8')
+
+
+    def is_correct_password(self, plaintext):
+        return bcrypt.check_password_hash(self._password, plaintext)
 
     @staticmethod
     def total_tasks():

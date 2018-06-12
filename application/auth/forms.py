@@ -10,7 +10,7 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     username = StringField("Käyttäjätunnus:", [validators.Length(min=5)])
-    password = PasswordField("Salasana:", [validators.Length(min=5)])
+    plaintext_password = PasswordField("Salasana:", [validators.Length(min=5)])
     name = StringField("Nimesi:", [validators.Length(min=5)])
     certificates = StringField("Käymäsi kurssit (erota pilkulla):", [validators.Required(message="Kenttä ei voi olla tyhjä")])
 

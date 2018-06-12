@@ -3,6 +3,9 @@ app = Flask(__name__)
 
 import os
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+
+bcrypt = Bcrypt(app)
 
 #Herokun ja lokaalin tietokannan määrittelyt
 if os.environ.get("HEROKU"):

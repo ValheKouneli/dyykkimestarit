@@ -23,14 +23,14 @@
                 </ul>
             </td>
             <td>
-                {{ form.password.label }}
+                {{ form.plaintext_password.label }}
             </td>
             <td>
-                {{ form.password }}
+                {{ form.plaintext_password }}
             </td>
             <td>
                 <ul>
-                    {% for error in form.password.errors %}
+                    {% for error in form.plaintext_password.errors %}
                     <li>
                         {{ error }}
                     </li>
