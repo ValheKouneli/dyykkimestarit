@@ -5,11 +5,14 @@ Tietokantasovellus, kesä 2018
 
 [Asennusohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/asennusohje.md)
 
-##### Käyttäjätunnukset:
-Käyttäjätunnus - Salasana
+[Käyttöohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/kaytto-ohje.md)
 
-*admin - admin123*  
-*tester - tester123*
+##### Käyttäjätunnukset:
+
+| Käyttäjätunnus   | Salasana   |
+| ---------------- | ---------- |
+| admin            | admin123   |
+| tester           | tester123  |
 
 Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä.
 
