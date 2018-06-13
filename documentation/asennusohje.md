@@ -9,6 +9,7 @@ Sovellus on websovellus, jonka toimintaympäristö on selain. Tästä syystä oh
 ```
 $ sudo apt-get update
 $ sudo apt-get install python3
+$ sudo apt-get install sqlite3
 ```
 + Mikäli käytät MacOS -laitetta, suosittelen käyttämään Homebrew nimistä paketinhallintaohjelmistoa, joka toimii Linuxin apt-get:in tapaan. Asenna Homebrew ja suorita seuraavat komennot
 ```
