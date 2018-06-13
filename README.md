@@ -3,6 +3,8 @@ Tietokantasovellus, kesä 2018
 
 [Heroku](https://dyykkitsoha.herokuapp.com/)
 
+[Asennusohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/asennusohje.md)
+
 ##### Käyttäjätunnukset:
 Käyttäjätunnus - Salasana
 
