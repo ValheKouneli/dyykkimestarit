@@ -13,8 +13,8 @@ $ sudo apt-get install sqlite3
 ```
 + Mikäli käytät MacOS -laitetta, suosittelen käyttämään Homebrew nimistä paketinhallintaohjelmistoa, joka toimii Linuxin apt-get:in tapaan. Asenna Homebrew ja suorita seuraavat komennot
 ```
-brew install python3
-brew install sqlite3
+$ brew install python3
+$ brew install sqlite3
 ```
 1. Mikäli lataat sovelluksen ZIP pakkauksena, on sinulla oltava pakkausten purkamiseen soveltuva ohjelma, esimerkiksi 7zip.
 
