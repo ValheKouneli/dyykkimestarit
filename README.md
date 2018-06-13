@@ -5,7 +5,7 @@ Tietokantasovellus, kesä 2018
 
 [Asennusohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/asennusohje.md)
 
-[Käyttöohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/kaytto-ohje.md)
+[Käyttöohjeet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/kaytto_ohje.md)
 
 ##### Käyttäjätunnukset:
 
