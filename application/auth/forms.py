@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, validators
+from wtforms import PasswordField, StringField, SelectField, validators
 
 class LoginForm(FlaskForm):
     username = StringField("Käyttäjätunnus", [validators.Required(message="Käyttäjänimi puuttuu")])

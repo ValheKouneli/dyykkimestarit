@@ -39,6 +39,9 @@ class User(db.Model):
     def is_authenticated(self):
         return True
 
+    def roles(self):
+        return ["ADMIN"]
+
     #Salasanan kryptaus
     @hybrid_property
     def password(self):

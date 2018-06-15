@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
-from application import app, db, bcrypt
+from application import app, db, bcrypt, login_required
 from application.auth.models import User
 from application.auth.forms import LoginForm, RegisterForm
 
@@ -33,14 +33,16 @@ def auth_logout():
 #Tämä toiminto siirtyy Admin -käyttäjälle rajoitetuksi kun siihen asti päästään
 @app.route("/auth/register", methods = ["GET", "POST"])
 def auth_register():
+
     if request.method == "GET":
         return render_template("auth/register.html", form = RegisterForm())
     
     else:
         form = RegisterForm(request.form)
+
         if not form.validate():
             return render_template("auth/register.html", form = form)
-        
+
         new = User(form.username.data, bcrypt.generate_password_hash(form.plaintext_password.data).decode('utf-8'), form.name.data, form.certificates.data)
 
         db.session().add(new)

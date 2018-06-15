@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
-from application import app, db
+from application import app, db, login_required
 from application.worklog.models import WorkDone
 from application.worklog.models import UpcomingWork
 from application.auth.models import User
@@ -9,7 +9,7 @@ from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingFo
 
 #Etusivu
 @app.route("/worklog", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def worklog_stats():
     #Kirjautunut käyttäjä
     u = User.query.get(current_user.id)
@@ -20,7 +20,7 @@ def worklog_stats():
 
 #Yksittäinen työtehtävä
 @app.route("/worklog/<work_id>/", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def worklog_single(work_id):
     work = WorkDone.query.get(work_id)
     form = SingleForm(obj=work)
@@ -29,19 +29,19 @@ def worklog_single(work_id):
 
 #Listaus
 @app.route("/worklog/list", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def worklog_list():
     return render_template("worklog/list.html", worklog = WorkDone.query.filter_by(account_id = current_user.id) )
 
 #Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
-@login_required
+@login_required(role="ANY")
 def worklog_form():
     return render_template("worklog/new.html", form=WorkForm())
 
 #Uuden työtehtävän POST - voisi yhdistää GET:iin, mutta metodien selkeyden vuoksi jätetään tekemättä
 @app.route("/worklog/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def worklog_create():
     form = WorkForm(request.form)
 
@@ -59,7 +59,7 @@ def worklog_create():
 
 #Työtehtävän muokkaaminen
 @app.route("/worklog/<work_id>/edit", methods=["GET", "POST"])
-@login_required
+@login_required(role="ANY")
 def worklog_edit(work_id):
     work = WorkDone.query.get(work_id)
     form = EditForm(obj=work)
@@ -83,7 +83,7 @@ def worklog_edit(work_id):
 
 #Työtehtävän poistaminen
 @app.route("/worklog/<work_id>/delete", methods=["GET", "POST"])
-@login_required
+@login_required(role="ANY")
 def worklog_delete(work_id):
     work = WorkDone.query.get(work_id)
 
@@ -95,7 +95,7 @@ def worklog_delete(work_id):
 #Suunnitellun työtehtävän luominen
 #Admin restricted - WIP
 @app.route("/worklog/upcoming/", methods=["GET", "POST"])
-@login_required
+@login_required(role="ADMIN")
 def worklog_upcoming():
 
     form = UpcomingForm()
