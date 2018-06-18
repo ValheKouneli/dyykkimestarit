@@ -17,7 +17,7 @@ else:
 db = SQLAlchemy(app) 
 
 #Kirjautuminen
-from application.auth.models import User
+from application.auth.models import User, AnonymousUser
 from os import urandom
 app.config["SECRET_KEY"] = urandom(32)
 
@@ -27,6 +27,12 @@ login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
 login_manager.login_message = "Kirjaudu sisään nähdäksesi tämän sivun"
+
+login_manager.anonymous_user = AnonymousUser
+
+@login_manager.user_loader
+def get_user(id):
+    return User.query.get(int(id))
 
 # roles in login_required
 from functools import wraps

@@ -22,6 +22,10 @@
               <a class="nav-item nav-link" href="{{ url_for('auth_login') }}">Kirjaudu sisään</a>
               <a class="nav-item nav-link" href="{{ url_for('auth_register') }}">Rekisteröidy</a>
             {% endif %}
+            <!-- Ei toimi -->
+            {% if current_user.roles == "ADMIN" %}
+            <a class="nav-item nav-link" href="{{ url_for('auth_register') }}">Rekisteröidy</a>
+            {% endif %}
           </div>         
       </nav>
     </div>

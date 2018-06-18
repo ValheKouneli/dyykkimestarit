@@ -2,8 +2,9 @@ from application import db, bcrypt
 
 from sqlalchemy.sql import text
 from sqlalchemy.ext.hybrid import hybrid_property
+from flask_login import UserMixin, AnonymousUserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
 
     __tablename__ = "account"
 
@@ -16,6 +17,7 @@ class User(db.Model):
     #Muut tiedot
     name = db.Column(db.String(144), nullable=False)
     certificates = db.Column(db.String(144), nullable=False)
+    
 
     #Tehtävät
     work = db.relationship("WorkDone", backref='account', lazy=True)
@@ -81,3 +83,10 @@ class User(db.Model):
             response.append({"tasks":row[0]})
 
         return response
+
+class AnonymousUser(AnonymousUserMixin):
+
+    @property
+    def roles(self):
+        return ["NONE"]
+    
