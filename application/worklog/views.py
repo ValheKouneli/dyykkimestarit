@@ -9,18 +9,15 @@ from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingFo
 
 #Etusivu
 @app.route("/worklog", methods=["GET"])
-@login_required(role="USER")
+@login_required(role="ANY")
 def worklog_stats():
 
     #Kirjautunut käyttäjä
     u = User.query.get(current_user.id)
 
-    if u is None:
-        return render_template("auth/loginform.html")
-    else:
-        return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
-                            total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u),
-                            user_work = User.user_tasks(u), upcoming_work = UpcomingWork.select_filtered(u) )
+    return render_template("worklog/front.html", user=u, total_work=User.total_tasks(), 
+                    total_hours=WorkDone.total_hours(), user_hours=WorkDone.user_hours(u),
+                    user_work = User.user_tasks(u), upcoming_work = UpcomingWork.select_filtered(u) )
 
 #Yksittäinen työtehtävä
 @app.route("/worklog/<work_id>/", methods=["GET"])
