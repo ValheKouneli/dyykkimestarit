@@ -30,8 +30,9 @@ def auth_logout():
     logout_user()
     return redirect(url_for("index"))
 
-#Tämä toiminto siirtyy Admin -käyttäjälle rajoitetuksi kun siihen asti päästään
+
 @app.route("/auth/register", methods = ["GET", "POST"])
+
 def auth_register():
 
     if request.method == "GET":
@@ -43,7 +44,7 @@ def auth_register():
         if not form.validate():
             return render_template("auth/register.html", form = form)
 
-        new = User(form.username.data, bcrypt.generate_password_hash(form.plaintext_password.data).decode('utf-8'), form.name.data, form.certificates.data)
+        new = User(form.username.data, bcrypt.generate_password_hash(form.plaintext_password.data).decode('utf-8'), form.name.data, form.certificates.data, form.roles.data)
 
         db.session().add(new)
         db.session().commit()

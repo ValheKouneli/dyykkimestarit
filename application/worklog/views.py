@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import current_user
 
-from application import app, db, login_required
+from application import app, db, login_required, login_manager
 from application.worklog.models import WorkDone
 from application.worklog.models import UpcomingWork
 from application.auth.models import User
@@ -25,6 +25,9 @@ def worklog_stats():
 def worklog_single(work_id):
     work = WorkDone.query.get(work_id)
     form = SingleForm(obj=work)
+
+    if work.account_id != current_user.id:
+        return login_manager.unauthorized()
 
     return render_template("worklog/single.html", w = WorkDone.query.get(work_id), form=form)
 
@@ -65,6 +68,9 @@ def worklog_edit(work_id):
     work = WorkDone.query.get(work_id)
     form = EditForm(obj=work)
 
+    if work.account_id != current_user.id:
+        return login_manager.unauthorized()
+
     if  request.method == 'POST':
         editform = EditForm(request.form)
 
@@ -88,13 +94,14 @@ def worklog_edit(work_id):
 def worklog_delete(work_id):
     work = WorkDone.query.get(work_id)
 
+    if work.account_id != current_user.id:
+        return login_manager.unauthorized()
+
     db.session().delete(work)
     db.session().commit()
 
     return redirect(url_for("worklog_list"))
 
-#Suunnitellun työtehtävän luominen
-#Admin restricted - WIP
 @app.route("/worklog/upcoming/", methods=["GET", "POST"])
 @login_required(role="ADMIN")
 def worklog_upcoming():

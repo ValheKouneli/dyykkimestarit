@@ -14,20 +14,24 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(144), unique=True, nullable=False)
     _password = db.Column(db.String(144), nullable=False)
 
+    #roolit
+    role = db.Column(db.String(60), nullable=False)
+
     #Muut tiedot
     name = db.Column(db.String(144), nullable=False)
     certificates = db.Column(db.String(144), nullable=False)
     
-
     #Tehtävät
     work = db.relationship("WorkDone", backref='account', lazy=True)
 
-    def __init__(self, username, plaintext_password, name, certificates):
+    def __init__(self, username, plaintext_password, name, certificates, roles):
         self.username = username
         self._password = plaintext_password
 
         self.name = name
         self.certificates = certificates
+
+        self.role = roles
 
     def get_id(self):
         return self.id
@@ -42,7 +46,9 @@ class User(db.Model, UserMixin):
         return True
 
     def roles(self):
-        return ["ADMIN"]
+        l = []
+        l.append(self.role)
+        return l
 
     #Salasanan kryptaus
     @hybrid_property
@@ -86,7 +92,5 @@ class User(db.Model, UserMixin):
 
 class AnonymousUser(AnonymousUserMixin):
 
-    @property
     def roles(self):
         return ["NONE"]
-    
