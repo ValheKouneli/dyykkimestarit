@@ -21,22 +21,22 @@ Käyttäjänä voin navigoida linkin avulla uusien suoritettujen työtehtävien 
 #### 3. Tiedon muokkaaminen
 Käyttäjänä voin navigoida linkin tai napin avulla yksittäisen jo kirjatun tehtävän muokkaussivustolle, jonka avulla voin muokata tietokantaan aiemmin lisättyä työtehtävää.
 + ~~Voin muokata tietokantaan tallennettuja työtehtäviä.~~ *-OK-*
-+ ~~Voin muokata vain itse kirjaamiani työtehtäviä.~~ *-oK-* (välillisesti, vaatii korjausta)
++ ~~Voin muokata vain itse kirjaamiani työtehtäviä.~~ *-OK-*
 + ~~Muokattu tieto on validoitua.~~ *-OK-*
 
 #### 4. Tiedon poistaminen
 Käyttäjänä voin poistaa linkin tai napin avulla yksittäisen jo kirjatun tehtävän tietokannasta.
 + ~~Voin poistaa työtehtäviä tietokannasta.~~ *-OK-*
-+ Voin poistaa vain itse lisäämiäni työtehtäviä tietokannasta.
++ ~~Voin poistaa vain itse lisäämiäni työtehtäviä tietokannasta.~~ *-OK-*
 
 #### 5. Kirjautuminen
 Käyttäjänä voin kirjautua sivustolle.
 + ~~Voin kirjautua sivustolle Kirjaudu -ominaisuuden kautta.~~ *-OK-*
 + ~~Sivuston tiedot näkyvät vain kirjautuneille käyttäjille.~~ *-OK-*
-+ Salasanat ja muut kriittiset kirjautumistiedot on suojattu.
++ ~~Salasanat on kryptattu~~ *-OK-*
 
 #### 6. Tapahtumat
 Uusien tapahtumien luontiin liittyviä ominaisuuksia
 + ~~Voin tarkastella minulle osoitettuja uusia tapahtumia~~ *-OK-*
 + Admin voi muokata ja poistaa tulevia tapahtumia
-+ Uusien tapahtumien luonti on piilossa tavallisilta käyttäjiltä
++ ~~Uusien tapahtumien luonti on piilossa tavallisilta käyttäjiltä~~ *-OK-*
