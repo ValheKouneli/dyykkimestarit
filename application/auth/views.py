@@ -49,4 +49,4 @@ def auth_register():
         db.session().add(new)
         db.session().commit()
 
-        return redirect(url_for("auth_login"))
+        return redirect(url_for("worklog_stats"))
