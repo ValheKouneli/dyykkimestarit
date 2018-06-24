@@ -1,7 +1,5 @@
 # Käyttäjätarinoita
 
-Käyttäjätarinoita on tulossa lisää, nyt kirjattuna ensimmäisten viikkojen osalta relevantteja asioita.
-
 Tälle sivulle on koottu relevantteja käyttäjätarinoita projektille. Käyttäjätarinoiden alle on kirjattu ehtoja (conditions of satisfaction), joiden toteutuessa käyttäjätarinan voidaan sanoa olevan kokonaisuudessaan toteutettu. Ehdot on kirjattu niin, että yleiset ehdot ovat ensimmäisenä ja haastavammat ehdot alempana. Yleisenä ehtona on esimerkiksi se, että järjestelmässä olevaa tietoa on mahdollista ylipäätään selata ja haastavampana ehtona sitä, että tieto näytetään käyttäjille vain käyttöoikeuksien mukaan. Toteutuneet ehdot on yliviivattu ja merkitty tekstillä *-OK-*.
 
 ### Yksittäinen käyttäjä
@@ -11,7 +9,6 @@ Tarkoittaa tässä yhteydessä työntekijää, joka käyttää sivustoa.
 Käyttäjänä voin tarkastella tietokantaan tallennettuja tietoja listaus- tai indeksisivustolta.
 + ~~Voin tarkastella kaikkia tietokannassa olevia suoritettuja töitä.~~ *-OK-*
 + ~~Voin tarkastella vain itse kirjaamiani töitä.~~ *-OK-*
-+ Voin suodattaa kirjaamiani töitä esimerkiksi suoritetun työn laadun mukaan.
 
 #### 2. Tiedon lisääminen
 Käyttäjänä voin navigoida linkin avulla uusien suoritettujen työtehtävien kirjaussivustolle ja lisätä siellä kenttiä täyttämällä uuden työtehtävän tietokantaan.
@@ -38,5 +35,5 @@ Käyttäjänä voin kirjautua sivustolle.
 #### 6. Tapahtumat
 Uusien tapahtumien luontiin liittyviä ominaisuuksia
 + ~~Voin tarkastella minulle osoitettuja uusia tapahtumia~~ *-OK-*
-+ Admin voi muokata ja poistaa tulevia tapahtumia
++ ~~Admin voi muokata ja poistaa tulevia tapahtumia~~ *-OK-*
 + ~~Uusien tapahtumien luonti on piilossa tavallisilta käyttäjiltä~~ *-OK-*
