@@ -17,6 +17,9 @@ def auth_login():
         
         user = User.query.filter_by(username=form.username.data).first()
 
+        if user is None:
+            return render_template("auth/loginform.html", form = LoginForm())
+
         if user.is_correct_password(form.password.data):
             login_user(user)
 
@@ -32,7 +35,6 @@ def auth_logout():
 
 
 @app.route("/auth/register", methods = ["GET", "POST"])
-@login_required(role="ADMIN")
 def auth_register():
 
     if request.method == "GET":

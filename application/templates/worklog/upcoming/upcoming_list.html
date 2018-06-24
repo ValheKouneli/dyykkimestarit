@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <p>
+        <button class="btn btn-success btn-lg" type="button" onclick="location.href='/worklog/upcoming/add'">Luo uusi tehtävä!</button>
+    </p>
+  <table class="table table-striped table-bordered text-center" >
+    <thead>
+      <tr>
+        <th>Päivämäärä</th>
+        <th>Työntekijän ID</th>
+        <th>Tulevan tehtävän nimi</th>
+        <th>Arvioidut työtunnit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for work in upcoming %}
+      <tr>
+        <td>{{ work.date }}</td>
+        <td>{{ work.account_id }}</td>
+        <td>{{ work.name }}</td>
+        <td>{{ work.hours }}</td>
+        <td><button class="btn btn-info" type="button" onclick="location.href='/worklog/upcoming/{{work.id}}'" >Tarkastele tietoja</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

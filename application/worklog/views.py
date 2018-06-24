@@ -5,7 +5,7 @@ from application import app, db, login_required, login_manager
 from application.worklog.models import WorkDone
 from application.worklog.models import UpcomingWork
 from application.auth.models import User
-from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingForm
+from application.worklog.forms import WorkForm, EditForm, SingleForm, UpcomingForm, UpcomingSingleForm
 
 #Etusivu
 @app.route("/worklog", methods=["GET"])
@@ -35,7 +35,10 @@ def worklog_single(work_id):
 @app.route("/worklog/list", methods=["GET"])
 @login_required(role="ANY")
 def worklog_list():
-    return render_template("worklog/list.html", worklog = WorkDone.query.filter_by(account_id = current_user.id) )
+    if 'ADMIN' in current_user.roles():
+        return render_template("worklog/list.html", worklog = WorkDone.query.all())
+    else:    
+        return render_template("worklog/list.html", worklog = WorkDone.query.filter_by(account_id = current_user.id) )
 
 #Uuden työtehtävän kirjaussivu
 @app.route("/worklog/new")
@@ -102,9 +105,15 @@ def worklog_delete(work_id):
 
     return redirect(url_for("worklog_list"))
 
-@app.route("/worklog/upcoming/", methods=["GET", "POST"])
+@app.route("/worklog/upcoming", methods=["GET"])
 @login_required(role="ADMIN")
 def worklog_upcoming():
+    return render_template("worklog/upcoming/upcoming_list.html", upcoming = UpcomingWork.query.all())
+
+
+@app.route("/worklog/upcoming/add", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def upcoming_new():
 
     form = UpcomingForm()
     users = User.query.all()
@@ -112,7 +121,7 @@ def worklog_upcoming():
     form.account_id.choices = [(a.id, a.name) for a in users]
 
     if request.method == 'GET':
-        return render_template("worklog/upcoming.html", form = form)
+        return render_template("worklog/upcoming/upcoming_new.html", form = form)
 
     else:
         upcomingform = UpcomingForm(request.form)
@@ -121,12 +130,58 @@ def worklog_upcoming():
 
         #Validoinnin tarkastus
         if not upcomingform.validate():
-            return render_template("worklog/upcoming.html", form = upcomingform)
+            return render_template("worklog/upcoming/upcoming_new.html", form = upcomingform)
 
         new = UpcomingWork(upcomingform.account_id.data, upcomingform.name.data, upcomingform.date.data, upcomingform.hours.data)  
 
         db.session().add(new)
         db.session().commit()
 
-        return redirect(url_for("worklog_list"))
+        return redirect(url_for("worklog_upcoming"))
+
+@app.route("/worklog/upcoming/<id>/delete", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def upcoming_delete(id):
+    upcoming = UpcomingWork.query.get(id)
+
+    db.session().delete(upcoming)
+    db.session().commit()
+
+    return redirect(url_for("worklog_upcoming"))
+
+@app.route("/worklog/upcoming/<id>/")
+@login_required(role="ADMIN")
+def upcoming_single(id):
+    work = UpcomingWork.query.get(id)
+    form = UpcomingSingleForm(obj=work)
+
+    return render_template("worklog/upcoming/upcoming_single.html", u = UpcomingWork.query.get(id), form=form)
+
+@app.route("/worklog/upcoming/<id>/edit", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def upcoming_edit(id):
+    work = UpcomingWork.query.get(id)
+    form = UpcomingForm(obj=work)
+    users = User.query.all()
+    form.account_id.choices = [(a.id, a.name) for a in users]
+
+    if  request.method == 'POST':
+        upcomingform = UpcomingForm(request.form)
+        upcomingform.account_id.choices = [(a.id, a.name) for a in users]
+
+        #Validoinnin tarkastus
+        if not upcomingform.validate():
+            return render_template("worklog/upcoming/upcoming_edit.html", u = UpcomingWork.query.get(id), form=upcomingform)
+
+        work.account_id = upcomingform.account_id.data
+        work.name = upcomingform.name.data
+        work.date = upcomingform.date.data
+        work.hours = upcomingform.hours.data
+
+        db.session().commit()
+
+        return redirect(url_for("upcoming_list"))
+    else:
+        return render_template("worklog/upcoming/upcoming_edit.html", u = UpcomingWork.query.get(id), form=form)
+
 

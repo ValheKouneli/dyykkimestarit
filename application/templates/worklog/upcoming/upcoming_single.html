@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<form method="POST" action"{{ url_for('upcoming_single', id=u.id) }}">
+    <table>
+        <tr>
+            <td>
+                {{ form.id.label }}
+            </td>
+            <td>
+                {{ form.id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.account_id.label }}
+            </td>
+            <td>
+                {{ form.account_id(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.name.label }}
+            </td>
+            <td>
+                {{ form.name(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.date.label }}
+            </td>
+            <td>
+                {{ form.date(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form.hours.label }}
+            </td>
+            <td>
+                {{ form.hours(readonly=true) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-success btn-lg" type="button" onclick="location.href='worklog/upcoming/list'" >Palaa takaisin listaukseen</button>
+            </td>
+            <td>
+                <button class="btn btn-info btn-lg" type="button" onclick="location.href='/worklog/upcoming/{{u.id}}/edit'" >Muokkaa</button>
+                <button class="btn btn-danger btn-sm" type="button" onclick="location.href='/worklog/upcoming/{{u.id}}/delete'">Poista</button>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

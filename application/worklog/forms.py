@@ -44,3 +44,14 @@ class UpcomingForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class UpcomingSingleForm(FlaskForm):
+    #Ei muokattavissa - readonly
+    account_id = IntegerField("Suunniteltu työntekijä: ")
+    id = IntegerField("Tulevan tehtävän kirjausnumero: ")
+    name = StringField("Tulevan työtehtävän nimi: ")
+    date = StringField("Tulevan työtehtävän päivämäärä: ")
+    hours = IntegerField("Tulevan työtehtävän kesto: ")
+
+    class Meta:
+        csrf = False

@@ -22,7 +22,7 @@
             {% endif %}
             {% if 'ADMIN' in current_user.roles() %}
             <span class="nav-item">Ylläpito:</span>
-            <a class="nav-item nav-link float-right" href="{{ url_for('worklog_upcoming') }}">Lisää tuleva tapahtuma</a>
+            <a class="nav-item nav-link float-right" href="{{ url_for('worklog_upcoming') }}">Tulevat työtehtävät</a>
             <a class="nav-item nav-link float-right" href="{{ url_for('auth_register') }}">Rekisteröi uusi käyttäjä</a>
             {% endif %}
           </div>         
