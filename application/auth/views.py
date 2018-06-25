@@ -35,6 +35,7 @@ def auth_logout():
 
 
 @app.route("/auth/register", methods = ["GET", "POST"])
+@login_required(role="ADMIN")
 def auth_register():
 
     if request.method == "GET":

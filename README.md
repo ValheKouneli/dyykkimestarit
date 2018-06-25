@@ -11,7 +11,7 @@ Tietokantasovellus, kesä 2018
 
 | Käyttäjätunnus   | Salasana   |
 | ---------------- | ---------- |
-| admin            | admin123   |
+| admin            | admin      |
 | tester           | tester123  |
 
 Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä.

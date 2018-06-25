@@ -8,7 +8,7 @@ Sovelluksen luoma sivusto on suojattu salasanalla, jotta ulkopuoliset eivät pä
 
 | Käyttäjätunnus   | Salasana   |
 | ---------------- | ---------- |
-| admin            | admin123   |
+| admin            | admin      |
 | tester           | tester123  |
 
 Sovellukseen on mahdollista luoda uusia käyttäjiä kirjautumalla admin -tunnuksella, joka on ylläpitäjän oikeuksilla varustettu. Kirjautuminen on helppoa, kirjautumaton käyttäjä ohjataan kirjautumissivulle joko Kirjaudu -napista tai jos hän yrittää navigoida muille sovelluksen sivuille.
