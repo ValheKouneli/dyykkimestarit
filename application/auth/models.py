@@ -20,9 +20,6 @@ class User(db.Model, UserMixin):
     #Muut tiedot
     name = db.Column(db.String(144), nullable=False)
     certificates = db.Column(db.String(144), nullable=False)
-    
-    #Tehtävät
-    work = db.relationship("WorkDone", backref='account', lazy=True)
 
     def __init__(self, username, plaintext_password, name, certificates, roles):
         self.username = username

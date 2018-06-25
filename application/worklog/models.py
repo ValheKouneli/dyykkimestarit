@@ -12,13 +12,13 @@ class WorkDone(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
 
     task = db.Column(db.String(144), nullable=False)
-    task_id = db.Column(db.Integer, nullable=True)
+    task_type = db.Column(db.String(144), nullable=True)
     worked_hours = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, account_id, task, task_id, worked_hours):
+    def __init__(self, account_id, task, task_type, worked_hours):
         self.account_id = account_id
         self.task = task
-        self.task_id = task_id
+        self.task_type = task_type
         self.worked_hours = worked_hours
 
     #Kaikki tunnit, olisi varmaan generoitavissa alchemylla mutta SQL harjoittelua
@@ -60,6 +60,8 @@ class UpcomingWork(db.Model):
     date = db.Column(db.Date, nullable=False)
     hours = db.Column(db.Integer, nullable=False)
 
+    users = db.relationship("User", secondary="planned_work", backref="work")
+
     def __init__(self, account_id, name, date, hours):
         self.account_id = account_id
         self.name = name
@@ -81,8 +83,8 @@ class UpcomingWork(db.Model):
 
         return response
 
-#Suunnitellut työtehtävät liitostaulu - HAHMOTELMA
+#Suunnitellut työtehtävät liitostaulu
 class PlannedWork(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    account_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
-    course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False, primary_key = True)
+    course_id = db.Column(db.Integer, db.ForeignKey("upcoming_work.id"), nullable=False, primary_key = True)
+
