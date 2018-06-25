@@ -105,6 +105,8 @@ def worklog_delete(work_id):
 
     return redirect(url_for("worklog_list"))
 
+# Alla olevat tulevien työtehtävien routet ovat aika samanlaisia kuin työtehtävienkin routet
+
 @app.route("/worklog/upcoming", methods=["GET"])
 @login_required(role="ADMIN")
 def worklog_upcoming():
