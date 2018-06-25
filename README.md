@@ -18,7 +18,7 @@ Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä.
 
 Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
 
-[User Storyt](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
+[User Storyt ja SQL lauseet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
 
 [Skeema / Tietokantakaavio](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/tietokantakaavio.md)
 
