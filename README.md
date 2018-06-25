@@ -14,27 +14,16 @@ Tietokantasovellus, kesä 2018
 | admin            | admin      |
 | tester           | tester123  |
 
-Järjestemään voi myös luoda omia käyttäjätunnuksia tällä hetkellä.
+Järjestemään voi myös luoda omia käyttäjätunnuksia admin käyttäjätunnuksen takaa.
 
-Viikoittaiset etapit on tallennettu releaseina. Uusin koodi pyörii masterissa, mutta releaseista voi tarkastaa mitä milläkin viikolla on ollut valmiina.
+Viikottaisia etappeja löytyy releaseina projektin githubista..
 
 [User Storyt ja SQL lauseet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
 
 [Skeema / Tietokantakaavio](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/tietokantakaavio.md)
 
 ## Kuvaus
-Valitsin aiheekseni hieman muokatun version aiheaihioissa olleesta projektin työaikaseurannasta. Toteutan kuvitteellisen sukelluskeskuksen työaikaseurannan, jossa työtä voidaan kirjata sekä seurata työlajeittain. Tällaisia työlajeja ovat esimerkiksi kurssien ohjaamiset, asiakkaiden sukellusretkien toteutus, varustehuolto ja toimistotyöt. Projekteja korvaamaan käytetään kursseja ja retkiä. Nämä tapahtumat saattavat osallistujamäärästä tai haastavuudesta johtuen vaatia enemmän osallistujia tai matkustamista, jolloin työaikaseurantaan tulee myös työvuorosuunnittelullinen elementti, joskin projektin tarkoituksena ei ole tehdä työvuorolistoja lääkärikeskus -aiheen mukaisesti.
+Valitsin aiheekseni hieman muokatun version aiheaihioissa olleesta projektin työaikaseurannasta. Toteutan kuvitteellisen sukelluskeskuksen työaikaseurannan, jossa 
+työntekijän työtä voidaan kirjata ja seurata. Tarkastelijoille näytetään listaus ja laskenta omista kirjauksista sekä tapahtumista. Järjestelmässä voi myös luoda uusia tapahtumia ja asettaa niitä työntekijöiden tuleviksi työtehtäviksi. Tarkastelijoille näytetään listaus ja laskenta omista kirjauksista sekä tapahtumista. Järjestelmällä on seä työaikaseurannallinen että työvuorosuunnittelullinen ulottuvuus, joita on rajoitettu käyttöoikeuksien kautta. Työntekijä voi kirjata työtehtäviä ja ylläpitäjä tapahtumia. Tarkemmat tiedot käyttötapauksista User Storyt ja SQL lauseet -linkin takaa.
 
-### Perustoimintoja
-* Kirjautuminen sivustolle
-* Työaikakirjauksen teko (Lisää uusi tietokantaan, lue kirjaus tietokannasta, muokkaa kirjausta, poista kirjaus)
-* Kurssin, retken tai muun tapahtuman perustaminen (Lisää uusi tietokantaan, lue kirjaus tietokannasta, muokkaa kirjausta, poista kirjaus)
-* Työntekijän liittäminen tapahtumaan
-* Työntekijän poistaminen tapahtumasta
-* Keskuksen johtajan raportit
-* Työntekijän henkilökohtainen raportti
-
-### Suunniteltuja lisätoimintoja
-* Työvuorosuunnittelullinen käyttöliittymä johtajan näkymään 
-* Uusien kurssien ja tapahtumien luonti tulevaisuuteen (näkyminen työntekijöiden näkymässä) (CRUD -operaatiot, tietokantataulu)
-* Varoitukset, mikäli kursseille ja tapahtumiin suunnitelluilla kouluttajilla ei ole tarvittavia valmiuksia kyseiseen tapahtumaan
+[Suunnitelmat, Toteutuneet toiminnallisuudet ja puutteet - itsereflektio 25.6.2018](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/reflektio.md)
