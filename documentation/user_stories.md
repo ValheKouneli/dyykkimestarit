@@ -112,6 +112,14 @@ CREATE TABLE account (
     certificates VARCHAR(144) NOT NULL,
     work INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (work) REFERENCES work_done (account_id)
+    FOREIGN KEY (work) REFERENCES work_done(account_id)
 );
+
+CREATE TABLE planned_work (
+    account_id INT NOT NULL,
+    course_id INT NOT NULL,
+    PRIMARY KEY (account_id),
+    PRIMARY KEY (course_id),
+    FOREIGN KEY (account_id) REFERENCES account(id),
+    FOREIGN KEY (course_id) REFERENCES upcoming_work(id)
 ```
