@@ -16,7 +16,7 @@ Tietokantasovellus, kesä 2018
 
 Järjestemään voi myös luoda omia käyttäjätunnuksia admin käyttäjätunnuksen takaa.
 
-Viikottaisia etappeja löytyy releaseina projektin githubista..
+Viikottaisia etappeja löytyy releaseina projektin githubista.
 
 [User Storyt ja SQL lauseet](https://github.com/Dforssi/dyykkimestarit/blob/master/documentation/user_stories.md)
 
