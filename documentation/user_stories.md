@@ -1,6 +1,6 @@
 # Käyttäjätarinoita
 
-Tälle sivulle on koottu relevantteja käyttäjätarinoita projektille. Käyttäjätarinoiden alle on kirjattu ehtoja (conditions of satisfaction), joiden kautta käyttäjätarina voidaa katsoa toteutuneeksi. Jokaisen kohdan alle on kirjattu tapauksiin liittyviä SQL kyselyitä pseudokoodilla täydennettyinä.
+Tälle sivulle on koottu relevantteja käyttäjätarinoita projektille. Käyttäjätarinoiden alle on kirjattu ehtoja (conditions of satisfaction), joiden kautta käyttäjätarina voidaa katsoa toteutuneeksi. Jokaisen kohdan alle on kirjattu tapauksiin liittyviä SQL kyselyitä pseudokoodilla täydennettyinä. Tämän dokumentin loppuun on myös kirjattuna CREATE TABLE -lausekkeet tauluille, joihin kyselyissä referoidaan.
 
 #### 1. Tiedon selaaminen
 Käyttäjänä voin tarkastella tietokantaan tallennettuja tietoja listaus- tai indeksisivustolta.
@@ -76,4 +76,42 @@ INSERT INTO upcoming_work (id, account_id, name, date, hours) VALUES (<juokseva 
 UPDATE upcoming_work SET name = <muutos>, date = <muutos>, hours = <muutos> WHERE (id = <parametrina annettu id>);
 
 DELETE FROM upcoming_work WHERE (id = <parametrina annettu id>);
+```
+
+#### CREATE TABLE -lauseet
+
+```sql
+CREATE TABLE work_done (
+    id INT NOT NULL,
+    date_created DATETIME,
+    date_modified DATETIME,
+    account_id VARCHAR(144) NOT NULL,
+    task VARCHAR(144) NOT NULL,
+    task_id INT,
+    worked_hours INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (account_id) REFERENCES account(account_id)
+);
+
+CREATE TABLE upcoming_work (
+    id INT NOT NULL,
+    account_id VARCHAR(144) NOT NULL,
+    name VARCHAR(144) NOT NULL,
+    date DATE NOT NULL,
+    hours INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (account_id) REFERENCES account(account_id)
+);
+
+CREATE TABLE account (
+    id INT NOT NULL,
+    username VARCHAR(144) NOT NULL UNIQUE,
+    _password VARCHAR(144) NOT NULL,
+    role VARCHAR(60) NOT NULL,
+    name VARCHAR(144) NOT NULL,
+    certificates VARCHAR(144) NOT NULL,
+    work INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (work) REFERENCES work_done (account_id)
+);
 ```
